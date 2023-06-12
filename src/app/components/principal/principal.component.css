@@ -1,0 +1,93 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  img {
+    width: 30%;
+    height: 20%;
+    margin-top: 10px;
+    image-rendering: optimizeQuality;
+    margin-left: 30px;
+  }
+
+  
+  .mat-toolbar {
+    flex: 0 0 auto;
+    background-color: black;
+    height: 12vh;
+  }
+  
+  .sidenav-container {
+    flex: 1;
+    display: flex;
+    background-color: aliceblue;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 230px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+  }
+
+  
+  .main-content {
+    margin-top: 30px;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-left: 50px;
+  }
+  
+  .center-content {
+    text-align: center; 
+    padding-left: 20px;   
+    padding-top: 20px;
+    padding-right: 20px;
+  }
+
+  .active {
+    background-color: #f0f0f0;
+  }
+
+  .sidenav-list {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .sidenav-item {
+    display: flex;
+    align-items: center;
+  }
+
+
+
+  @media (max-width: 767px) {
+
+    
+    mat-sidenav-container {
+      height: 100vh;
+    }
+  
+    .mat-sidenav {
+      width: 50%;
+    }
+
+    img {
+      width: 80%;
+      height: 75%;
+      margin-top: 10px;
+      image-rendering: optimizeQuality;
+      margin-left: 30px;
+    }
+
+    .sidenav-label {
+      font-size: 15px;
+    }
+  
+  }
+
+  

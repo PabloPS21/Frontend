@@ -1,0 +1,77 @@
+<div class="container">
+    <mat-toolbar>
+      <button mat-icon-button *ngIf="isMobile" (click)="toggleSidenav()">
+        <mat-icon style="color: white;">menu</mat-icon>
+      </button>
+      <span><img src="assets/images/title.png"></span>
+    </mat-toolbar>
+    
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="opened" class="sidenav">
+
+        <!--MENÚ LATERAL-->
+        <mat-nav-list class="sidenav-list">
+          <mat-divider></mat-divider>
+          <mat-list-item routerLink="/main/inicio" routerLinkActive="active">
+            <span class="sidenav-label">Inicio</span>
+            <mat-icon matListItemIcon>home</mat-icon>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-list-item disableRipple>
+            <span class="sidenav-label">Buscar</span>
+            <mat-icon matListItemIcon>search</mat-icon>
+          </mat-list-item>
+          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+            <span style="font-size: small;">- Por título</span>  
+          </mat-list-item>
+          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+            <span style="font-size: small;">- Por género</span>  
+          </mat-list-item>
+          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+            <span style="font-size: small;">- Por desarrolladora</span>  
+          </mat-list-item>
+          
+          <mat-divider></mat-divider>
+
+          <mat-list-item disableRipple>
+            <span class="sidenav-label">Mi biblioteca</span>
+            <mat-icon matListItemIcon>book</mat-icon>
+          </mat-list-item>
+          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+            <span style="font-size: small;">- Pendientes</span>  
+          </mat-list-item>
+          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+            <span style="font-size: small;">- Jugando</span>  
+          </mat-list-item>
+          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+            <span style="font-size: small;">- Terminados</span>  
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-list-item routerLink="/main/info" routerLinkActive="active" class="sidenav-item">
+            <span class="sidenav-label">Sobre el sitio</span>
+            <mat-icon matListItemIcon>info</mat-icon>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-list-item (click)="cerrarSesion()">
+            <span class="sidenav-label">Cerrar sesión</span>
+            <mat-icon matListItemIcon>logout</mat-icon>
+          </mat-list-item>
+          
+         
+        </mat-nav-list>
+       
+      </mat-sidenav>
+
+      <!--CONTENIDO PRINCIPAL-->
+      
+        <div class="center-content">
+          <router-outlet></router-outlet>
+        </div>
+      
+    </mat-sidenav-container>
+  </div>
+  
+  

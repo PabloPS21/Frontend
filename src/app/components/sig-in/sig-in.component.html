@@ -1,0 +1,44 @@
+<div class="container">
+  <mat-card class="card" style="padding: 20px;">
+    <mat-card-header style="margin-bottom: 10px; display: flex; justify-content: center;">
+      <mat-card-title class="card-title">¡Únete a nosotros!</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form #form="ngForm" (ngSubmit)="submitForm()">
+        <div class="form-container">
+          <mat-form-field>
+            <input matInput placeholder="Nombre de usuario" type="text" [(ngModel)]="username" name="username" autocomplete="off">
+            <mat-icon matSuffix>account_circle</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Correo electrónico" type="text" [(ngModel)]="email" name="email" autocomplete="off">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </div>
+      
+        <mat-divider class="blue-divider"></mat-divider>
+      
+        <div class="form-container">
+          <mat-form-field>
+            <input matInput placeholder="Contraseña" [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password" name="password">
+            <mat-icon matSuffix *ngIf="!password">vpn_key</mat-icon>
+            <button mat-icon-button matSuffix *ngIf="password" type="button" (click)="togglePasswordVisibility()">
+              <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        
+          <mat-form-field>
+            <input matInput placeholder="Repite la contraseña" [type]="hideRepeatPassword ? 'password' : 'text'" [(ngModel)]="repeatPassword" name="repeatPassword">
+            <mat-icon matSuffix *ngIf="!repeatPassword">vpn_key</mat-icon>
+            <button mat-icon-button matSuffix *ngIf="repeatPassword" type="button" (click)="toggleRepeatPasswordVisibility()">
+              <mat-icon>{{ hideRepeatPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div *ngIf="error" class="error-message">{{ error }}</div>
+          <button mat-raised-button color="primary" type="submit">Registrarse</button>
+        </div>
+      </form> 
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,13 @@
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-button {
+  background-color: #f1f1f1;
+  color: #333333;
+}
+
+.dialog-button:hover {
+  background-color: #cccccc;
+}

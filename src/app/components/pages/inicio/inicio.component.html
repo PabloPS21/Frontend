@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="title">RECIENTEMENTE AÑADIDOS</h2>
+    
+
+    <div class="row">
+        <div class="col" *ngFor="let juego of juegosEstrenados; let i=index">
+          <app-game-card [juego]="juego"></app-game-card>
+        </div>
+    </div>
+
+    <h3>
+      <a routerLink="/main/recently-added">Ver más...</a>
+    </h3>
+    <h2 class="title">CONTENIDO RELACIONADO</h2>
+    <mat-divider class="line"></mat-divider>
+</div>
