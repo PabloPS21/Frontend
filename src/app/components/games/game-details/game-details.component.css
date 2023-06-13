@@ -5,11 +5,22 @@ mat-card-header img {
     object-fit: cover;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 mat-card-header {
     display: flex;
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+ .buttonMenu {
+    background-color: #e7f1ff;
+ }
 
 .content {
     margin-left: 30px;
@@ -96,4 +107,6 @@ mat-card-header {
     .details {
         justify-items: end;
     }
+
+    
   }

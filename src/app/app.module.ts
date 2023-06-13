@@ -32,6 +32,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 //Configuración de las rutas
@@ -81,6 +82,7 @@ const routes: Routes = [
     MatExpansionModule,
     MatMenuModule,
     MatGridListModule,
+    MatRadioModule
   ],
   exports: [RouterModule],
   providers: [],

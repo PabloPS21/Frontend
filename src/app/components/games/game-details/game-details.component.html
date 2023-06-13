@@ -2,7 +2,18 @@
     <mat-card-header>
         <img mat-card-image [src]="juego?.background_image" alt="{{ juego?.slug }}">
         <div class="content">
-            <h1>{{juego?.name}}</h1>
+            <div class="header">
+                <h1>{{juego?.name}}</h1>
+                <button mat-button [matMenuTriggerFor]="menu" class="buttonMenu">
+                    <span>Añadir a</span>
+                    <mat-icon>add</mat-icon>    
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Pendientes</button>
+                    <button mat-menu-item>Jugando</button>
+                    <button mat-menu-item>Terminados</button>
+                </mat-menu>
+            </div>
             <div class="details">
                 <div class="platformas">
                     <p class="detail-title">Plataformas</p>
@@ -23,7 +34,7 @@
                     </div>
                 </div>               
                 <div class="fechaSalida secondRow">
-                    <p class="detail-title">Fecha de salida</p>
+                    <p class="detail-title">Lanzamiento</p>
                     <span>{{fechaSalida? fechaSalida: 'Por determinar'}}</span>
                 </div>
             </div>
