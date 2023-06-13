@@ -1,9 +1,9 @@
 <mat-card>
     <mat-card-header>
-        <img mat-card-image [src]="juego.image" alt="{{ juego.name }}">  
+        <img mat-card-image [src]="juego.background_image" alt="{{ juego.slug }}">  
     </mat-card-header>
-    <p class="name">{{ juego.name }}</p>
+    <p class="name">{{ juego.name}}</p>
     <mat-card-actions class="actions">
-        <a mat-button class="details-link">Ver detalles</a>
+        <a [routerLink]="['/main/game-detail']" [queryParams]="{ info: juego.id}" mat-button class="details-link">Ver detalles</a>
     </mat-card-actions>
 </mat-card>

@@ -1,1 +1,46 @@
-<p>game-details works!</p>
+<mat-card>
+    <mat-card-header>
+        <img mat-card-image [src]="juego?.background_image" alt="{{ juego?.slug }}">
+        <div class="content">
+            <div class="header">
+                <h1>{{juego?.name}}</h1>
+                <button mat-button [matMenuTriggerFor]="menu" class="buttonMenu">
+                    <span>Añadir a</span>
+                    <mat-icon>add</mat-icon>    
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Pendientes</button>
+                    <button mat-menu-item>Jugando</button>
+                    <button mat-menu-item>Terminados</button>
+                </mat-menu>
+            </div>
+            <div class="details">
+                <div class="platformas">
+                    <p class="detail-title">Plataformas</p>
+                    <div class="details-list">
+                        <div class="list-item" *ngFor="let plataforma of plataformas">{{ plataforma }}</div>
+                    </div>
+                </div>
+                <div class="desarrolladora ">
+                    <p class="detail-title">Desarrolladora</p>
+                    <div class="details-list">
+                        <div class="list-item" *ngFor="let developer of desarrolladores">{{ developer }}</div>
+                    </div>
+                </div>
+                <div class="genre secondRow">
+                    <p class="detail-title">Géneros</p>
+                    <div class="details-list">
+                        <div class="list-item" *ngFor="let genero of generos">{{ genero }}</div>
+                    </div>
+                </div>               
+                <div class="fechaSalida secondRow">
+                    <p class="detail-title">Lanzamiento</p>
+                    <span>{{fechaSalida? fechaSalida: 'Por determinar'}}</span>
+                </div>
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-actions class="description">
+        <p id="texto">{{descripcion}}</p>
+    </mat-card-actions>
+</mat-card>
