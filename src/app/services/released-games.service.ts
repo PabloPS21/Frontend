@@ -15,8 +15,6 @@ export class ReleasedGamesService {
 
   constructor(private http: HttpClient) { }
 
-  //TODO: paginación
-
 
   juegosEstrenadosUltimaSemana(): Observable<SearchGame> {
     const fechaActual = new Date();
@@ -38,7 +36,7 @@ export class ReleasedGamesService {
     const fechaActualFormato = this.formatDate(fechaActual);
     const fechaSemanaAtrasFormato = this.formatDate(fechaSemanaAtras);
 
-    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}`;
+    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}&page_size=100000`;
 
     return this.http.get<SearchGame>(url);
 
@@ -51,7 +49,7 @@ export class ReleasedGamesService {
     const fechaActualFormato = this.formatDate(fechaActual);
     const fechaSemanaAtrasFormato = this.formatDate(fechaSemanaAtras);
 
-    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}`;
+    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}&page_size=100`;
 
     return this.http.get<SearchGame>(url);
 

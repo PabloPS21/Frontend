@@ -31,6 +31,7 @@ mat-card-header {
 
 .content h1 {
     align-self: flex-start;
+    text-align: left;
 }
 
 .details {
@@ -101,11 +102,15 @@ mat-card-header {
     }
 
     .content h1 {
-        margin-left: 110px;
+        margin-left: 15px;
     }
 
     .details {
         justify-items: end;
+    }
+
+    #addSpan {
+        display: none;
     }
 
     

@@ -1,1 +1,37 @@
-<p>recently-added works!</p>
+<div class="container">
+    <div class="header">
+      <h1 id="titulo">Juegos estrenados en los últimos 7 días</h1>
+  
+      <div class="options">
+        <mat-radio-group [value]="'lastWeek'">
+            <mat-radio-button value="lastWeek" class="custom-radio-button" color="primary" (click)="mostrarJuegosEstrenadosUltimaSemana()">
+              <span class="radio-label">ULTIMA SEMANA</span>
+            </mat-radio-button>
+            <mat-radio-button value="lastMonth" class="custom-radio-button" color="primary" (click)="mostrarJuegosEstrenadosUltimoMes()">
+              <span class="radio-label">ULTIMO MES</span>
+            </mat-radio-button>
+            <mat-radio-button value="lastThreeMonths" class="custom-radio-button" color="primary" (click)="mostrarJuegosEstrenadosUltimosTresMeses()">
+              <span class="radio-label">ULTIMOS TRES MESES</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        <button mat-button [matMenuTriggerFor]="menu" class="buttonMenu">
+            <span id="addSpan">ORDENAR POR</span>
+            <mat-icon>sort</mat-icon>    
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Título</button>
+            <button mat-menu-item>Puntuación</button>
+            <button mat-menu-item>Fecha</button>
+        </mat-menu>
+      </div>
+
+    </div>
+
+    <div class="gamesContainer">
+        <div class="row">
+            <div class="col" *ngFor="let juego of juegosMostrados; let i=index">
+              <app-game-card [juego]="juego"></app-game-card>
+            </div>
+        </div>
+    </div>
+  </div>

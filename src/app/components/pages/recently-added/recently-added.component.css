@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+}
+
+.custom-radio-button {
+    margin-right: 20px;
+}
+
+.options {
+    margin-top: 15px;
+}
+
+.buttonMenu {
+    margin-left: 20px;
+    background-color: #a8c9f6;
+}
+
+.gamesContainer {
+    margin-top: 20px;
+}
+
+.row {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -16px; 
+  }
+  
+.col {
+    flex: 1 0 20%;
+    padding: 10px; 
+    max-width: fit-content;
+}
