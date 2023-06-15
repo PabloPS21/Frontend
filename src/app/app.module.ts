@@ -17,7 +17,7 @@ import { GameDetailsComponent } from './components/games/game-details/game-detai
 import { RecentlyAddedComponent } from './components/pages/recently-added/recently-added.component';
 
 import {RouterModule, Routes} from '@angular/router';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
@@ -33,6 +33,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 //Configuración de las rutas
@@ -83,7 +84,8 @@ const routes: Routes = [
     MatExpansionModule,
     MatMenuModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxPaginationModule
   ],
   exports: [RouterModule],
   providers: [],

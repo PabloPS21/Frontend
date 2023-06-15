@@ -24,7 +24,7 @@ export class InicioComponent implements OnInit {
 
   //Devuelve un array de juegos con su slug, nombre y una imagen
   mostrarJuegosEstrenados(){
-    this.releasedGameService.juegosEstrenadosUltimaSemana().subscribe
+    this.releasedGameService.juegosEstrenadosUltimaSemana(1).subscribe
     ((result: SearchGame) => {
       const games: Result[] = result.results;
       this.juegosEstrenados = games.slice(0,8);
