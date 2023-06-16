@@ -24,6 +24,7 @@ export class RecentlyAddedComponent implements OnInit {
   numPages: number = 0;
   page: number = 1;
 
+  showSpinner: boolean = false;
 
   ngOnInit(): void {
     this.mostrarJuegosEstrenadosUltimaSemana();
@@ -32,6 +33,8 @@ export class RecentlyAddedComponent implements OnInit {
 
   mostrarJuegosEstrenadosUltimaSemana() {
     this.page = 1;
+
+    this.showSpinner = true;
     
     const titulo = document.getElementById("titulo");
     if (titulo) titulo!.innerHTML = "Juegos estrenados en la última semana";
@@ -41,6 +44,7 @@ export class RecentlyAddedComponent implements OnInit {
     if (this.juegosEstrenadosUltimaSemana.length > 0) {
       juegosMostradosTemp = this.juegosEstrenadosUltimaSemana;
       this.juegosMostrados = juegosMostradosTemp;
+      this.showSpinner = false;
     } else {
       this.releasedGameService.juegosEstrenadosUltimaSemana(1).subscribe((result: SearchGame) => {
         const games: Result[] = result.results;
@@ -57,8 +61,12 @@ export class RecentlyAddedComponent implements OnInit {
           const additionalGames = results.flatMap((result: SearchGame) => result.results);
           this.juegosEstrenadosUltimaSemana.push(...additionalGames);
           juegosMostradosTemp.push(...additionalGames);
+
+          juegosMostradosTemp = this.eliminarJuegosDuplicados(juegosMostradosTemp);
   
           this.juegosMostrados = juegosMostradosTemp
+
+          this.showSpinner = false;
         });
       });
   
@@ -67,6 +75,8 @@ export class RecentlyAddedComponent implements OnInit {
   
   mostrarJuegosEstrenadosUltimoMes() {
     this.page = 1;
+
+    this.showSpinner = true;
     
     const titulo = document.getElementById("titulo");
     if (titulo) titulo!.innerHTML = "Juegos estrenados en el último mes";
@@ -76,6 +86,7 @@ export class RecentlyAddedComponent implements OnInit {
     if (this.juegosEstrenadosUltimoMes.length > 0) {
       juegosMostradosTemp = this.juegosEstrenadosUltimoMes;
       this.juegosMostrados = juegosMostradosTemp;
+      this.showSpinner = false;
     } else {
       this.releasedGameService.juegosEstrenadosUltimoMes(1).subscribe((result: SearchGame) => {
         const games: Result[] = result.results;
@@ -93,7 +104,11 @@ export class RecentlyAddedComponent implements OnInit {
           this.juegosEstrenadosUltimoMes.push(...additionalGames);
           juegosMostradosTemp.push(...additionalGames);
   
-          this.juegosMostrados = juegosMostradosTemp
+          juegosMostradosTemp = this.eliminarJuegosDuplicados(juegosMostradosTemp);
+
+          this.juegosMostrados = juegosMostradosTemp;
+
+          this.showSpinner = false;
         });
       });
   
@@ -103,6 +118,8 @@ export class RecentlyAddedComponent implements OnInit {
   
   mostrarJuegosEstrenadosUltimosTresMeses() {
     this.page = 1;
+
+    this.showSpinner = true;
   
     const titulo = document.getElementById("titulo");
     if (titulo) titulo!.innerHTML = "Juegos estrenados en los últimos tres meses";
@@ -112,6 +129,7 @@ export class RecentlyAddedComponent implements OnInit {
     if (this.juegosEstrenadosUltimosTresMeses.length > 0) {
       juegosMostradosTemp = this.juegosEstrenadosUltimosTresMeses;
       this.juegosMostrados = juegosMostradosTemp;
+      this.showSpinner = false;
     } else {
       this.releasedGameService.juegosEstrenadosUltimosTresMeses(1).subscribe((result: SearchGame) => {
         this.numPages = Math.ceil(result.count / 20);
@@ -128,14 +146,31 @@ export class RecentlyAddedComponent implements OnInit {
           const additionalGames = results.flatMap((result: SearchGame) => result.results);
           this.juegosEstrenadosUltimosTresMeses.push(...additionalGames);
           juegosMostradosTemp.push(...additionalGames);
+
+          juegosMostradosTemp = this.eliminarJuegosDuplicados(juegosMostradosTemp);
   
           this.juegosMostrados = juegosMostradosTemp;
+
+          this.showSpinner = false;
         });
       });
     }
   }
   
 
+  eliminarJuegosDuplicados(juegos: Result[]): Result[] {
+    const juegosUnicos: Result[] = [];
+    const nombresJuegos: Set<string> = new Set();
+  
+    juegos.forEach((juego) => {
+      if (!nombresJuegos.has(juego.name)) {
+        nombresJuegos.add(juego.name);
+        juegosUnicos.push(juego);
+      }
+    });
+  
+    return juegosUnicos;
+  }
 
   onPageChange(event: number): void {
     this.page = event;
@@ -144,6 +179,27 @@ export class RecentlyAddedComponent implements OnInit {
     if (element) {
       element.scrollIntoView({ behavior: 'auto' });
     }
+  }
+
+  ordenarPuntuacion(): void {
+    this.juegosMostrados.sort((a, b) => b.playtime - a.playtime);
+    this.page = 1;
+  }
+  
+  ordenarFecha(): void {
+    this.juegosMostrados.sort((a, b) => {
+      if (a.released && b.released) {
+        return new Date(a.released).getTime() - new Date(b.released).getTime();
+      } else {
+        return 0;
+      }
+    });
+    this.page = 1;
+  }
+  
+  ordenarTitulo(): void {
+    this.juegosMostrados.sort((a, b) => a.name.localeCompare(b.name));
+    this.page = 1; 
   }
 
 }

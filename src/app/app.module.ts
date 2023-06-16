@@ -34,6 +34,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 //Configuración de las rutas
@@ -85,7 +86,8 @@ const routes: Routes = [
     MatMenuModule,
     MatGridListModule,
     MatRadioModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatProgressSpinnerModule
   ],
   exports: [RouterModule],
   providers: [],
