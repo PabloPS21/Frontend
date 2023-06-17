@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { SearchGame } from '../models/searchGame';
-import { Result } from '../models/searchGame';
 import { environment } from '../environment/environment';
 
 @Injectable({
@@ -15,43 +14,47 @@ export class ReleasedGamesService {
 
   constructor(private http: HttpClient) { }
 
-  //TODO: paginación
 
-
-  juegosEstrenadosUltimaSemana(): Observable<SearchGame> {
+  juegosEstrenadosUltimaSemana(page: number): Observable<SearchGame> {
     const fechaActual = new Date();
     const fechaSemanaAtras = new Date(fechaActual.getTime() - 7 * 24 * 60 * 60 * 1000);
 
     const fechaActualFormato = this.formatDate(fechaActual);
     const fechaSemanaAtrasFormato = this.formatDate(fechaSemanaAtras);
 
-    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}`;
+    const pageNumber: number = page;
+
+    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}&page=${pageNumber}&page_size=20`;
 
     return this.http.get<SearchGame>(url);
 
   }
 
-  juegosEstrenadosUltimoMes(): Observable<SearchGame> {
+  juegosEstrenadosUltimoMes(page: number): Observable<SearchGame> {
     const fechaActual = new Date();
     const fechaSemanaAtras = new Date(fechaActual.getTime() - 31 * 24 * 60 * 60 * 1000);
 
     const fechaActualFormato = this.formatDate(fechaActual);
     const fechaSemanaAtrasFormato = this.formatDate(fechaSemanaAtras);
 
-    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}`;
+    const pageNumber: number = page; 
+
+    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}&page=${pageNumber}&page_size=20`;
 
     return this.http.get<SearchGame>(url);
 
   }
 
-  juegosEstrenadosUltimosTresMeses(): Observable<SearchGame> {
+  juegosEstrenadosUltimosTresMeses(page: number): Observable<SearchGame> {
     const fechaActual = new Date();
     const fechaSemanaAtras = new Date(fechaActual.getTime() - 31 * 3 * 24 * 60 * 60 * 1000);
 
     const fechaActualFormato = this.formatDate(fechaActual);
     const fechaSemanaAtrasFormato = this.formatDate(fechaSemanaAtras);
 
-    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}`;
+    const pageNumber: number = page; 
+
+    const url = `https://api.rawg.io/api/games?key=${this.apiKey}&dates=${fechaSemanaAtrasFormato},${fechaActualFormato}&page=${pageNumber}&page_size=20`;
 
     return this.http.get<SearchGame>(url);
 

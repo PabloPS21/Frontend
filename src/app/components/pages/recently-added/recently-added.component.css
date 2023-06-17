@@ -1,0 +1,78 @@
+ 
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+}
+
+.custom-radio-button {
+    margin-right: 20px;
+}
+
+.options {
+    margin-top: 15px;
+}
+
+.buttonMenu {
+    margin-left: 20px;
+    background-color: #a8c9f6;
+}
+
+.gamesContainer {
+    margin-top: 20px;
+}
+
+.row {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -16px; 
+  }
+  
+.col {
+    flex: 1 0 20%;
+    padding: 10px; 
+    max-width: fit-content;
+}
+
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      align-items: center;
+      text-align: center;
+    }
+  
+    .options {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 10px;
+    }
+  
+    .buttonMenu {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  
+    .row {
+      margin-top: 15px;
+    }
+    
+    .spinner-overlay mat-progress-spinner {
+        transform: scale(0.4);
+    }
+  }

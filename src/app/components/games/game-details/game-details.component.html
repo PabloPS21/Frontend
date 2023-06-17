@@ -4,8 +4,8 @@
         <div class="content">
             <div class="header">
                 <h1>{{juego?.name}}</h1>
-                <button mat-button [matMenuTriggerFor]="menu" class="buttonMenu">
-                    <span>Añadir a</span>
+                <button mat-button [matMenuTriggerFor]="menu" class="buttonMenu" >
+                    <span id="addSpan">Añadir a</span>
                     <mat-icon>add</mat-icon>    
                 </button>
                 <mat-menu #menu="matMenu">
