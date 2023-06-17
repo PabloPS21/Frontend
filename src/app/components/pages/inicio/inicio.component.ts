@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReleasedGamesService } from 'src/app/services/released-games.service';
 import { SearchGame } from 'src/app/models/searchGame';
 import { Result } from 'src/app/models/searchGame';
+import { ReducedResult } from 'src/app/models/reducedResult';
 
 
 
@@ -15,7 +16,7 @@ export class InicioComponent implements OnInit {
 
   constructor(private releasedGameService: ReleasedGamesService) {}
 
-  juegosEstrenados: Result[] = [];
+  juegosEstrenados: ReducedResult[] = [];
 
   ngOnInit() {
     this.mostrarJuegosEstrenados();
