@@ -14,6 +14,8 @@ export class LogOutDialogComponent {
     private router: Router
     ) {}
 
+    sessionStorage: Storage = window.sessionStorage;
+
   //Si apretamos el botón de volver simplemente cerramos el dialog
   cancelar() {
     this.dialogRef.close();
@@ -24,6 +26,7 @@ export class LogOutDialogComponent {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
     this.dialogRef.close();
+    this.sessionStorage.clear();
   }
 
 }

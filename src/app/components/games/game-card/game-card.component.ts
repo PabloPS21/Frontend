@@ -1,5 +1,5 @@
 import { Component, Input, OnInit} from '@angular/core';
-import { Result } from 'src/app/models/searchGame';
+import { ReducedResult } from 'src/app/models/reducedResult';
 
 @Component({
   selector: 'app-game-card',
@@ -8,6 +8,6 @@ import { Result } from 'src/app/models/searchGame';
 })
 export class GameCardComponent{
   
-  @Input() juego!: Result;
+  @Input() juego!: ReducedResult;
 
 }
