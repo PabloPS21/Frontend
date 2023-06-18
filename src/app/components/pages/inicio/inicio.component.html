@@ -12,5 +12,7 @@
       <a routerLink="/main/recently-added">Ver más...</a>
     </h3>
     <h2 class="title">CONTENIDO RELACIONADO</h2>
-    <mat-divider class="line"></mat-divider>
+    <div class="news-container" *ngFor="let noticia of noticiasRelacionadas; let i=index" >
+      <app-new-template [new]="noticia"></app-new-template>
+    </div>
 </div>

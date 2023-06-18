@@ -35,6 +35,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NewTemplateComponent } from './components/news/new-template/new-template.component';
 
 
 //Configuración de las rutas
@@ -63,7 +64,8 @@ const routes: Routes = [
     SiteInfoComponent,
     GameCardComponent,
     GameDetailsComponent,
-    RecentlyAddedComponent
+    RecentlyAddedComponent,
+    NewTemplateComponent
   ],
   imports: [
     [RouterModule.forRoot(routes)],

@@ -27,6 +27,12 @@
     margin-right: 10px;
   }
 
+  h3 a {
+    color: #007bff;
+  }
+
+  
+
 @media (max-width: 767px) {
 
     .title {
