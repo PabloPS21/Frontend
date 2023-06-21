@@ -24,6 +24,8 @@ export class InicioComponent implements OnInit {
   juegosEstrenados: ReducedResult[] = [];
   noticiasRelacionadas: Article[] = [];
 
+  loading: boolean = true;
+
   ngOnInit() {
     this.mostrarJuegosEstrenados();
     this.mostrarNoticiasRelacionadas();
@@ -32,10 +34,12 @@ export class InicioComponent implements OnInit {
 
   //Devuelve un array de juegos con su slug, nombre y una imagen
   mostrarJuegosEstrenados(){
+    this.loading = true;
     this.releasedGameService.juegosEstrenadosUltimaSemana(1).subscribe
     ((result: SearchGame) => {
       const games: Result[] = result.results;
       this.juegosEstrenados = games.slice(0,8);
+      this.loading = false;
     });
     
   }
@@ -44,9 +48,19 @@ export class InicioComponent implements OnInit {
     this.newsService.obtenerNoticiasRelacionadas().subscribe
     ((result: NewsModel) => {
       const news: Article[] = result.articles;
-      this.noticiasRelacionadas = news.slice(0,5);
-      console.log(this.noticiasRelacionadas);
+      const randomNews = this.shuffleArray(news).slice(0, 5);
+      this.noticiasRelacionadas = randomNews;
     })
   }
+
+  shuffleArray(array: any[]) {
+    // Implementación del algoritmo de Fisher-Yates para mezclar el array
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
 }
   

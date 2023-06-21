@@ -17,7 +17,10 @@ export class NewsService {
 
   obtenerNoticiasRelacionadas(): Observable<NewsModel> {
 
-    const url = `https://newsapi.org/v2/everything?q=videojuegos&from=2023-06-17&language=es&apiKey=${this.apiKey}`;
+    const today = new Date();
+    const threeDaysAgo = new Date(today.setDate(today.getDate() - 3)).toLocaleDateString();
+
+    const url = `https://newsapi.org/v2/everything?q=videojuegos&from=${threeDaysAgo}&language=es&apiKey=${this.apiKey}`;
 
     return this.http.get<NewsModel>(url);
 

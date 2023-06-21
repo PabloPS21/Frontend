@@ -1,8 +1,11 @@
 <div class="container">
     <h2 class="title">RECIENTEMENTE AÑADIDOS</h2>
     
+    <div *ngIf="loading" class="spinner-overlay">
+      <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    </div>
 
-    <div class="row">
+    <div class="row" *ngIf="!loading">
         <div class="col" *ngFor="let juego of juegosEstrenados; let i=index">
           <app-game-card [juego]="juego"></app-game-card>
         </div>
