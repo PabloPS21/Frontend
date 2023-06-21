@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { LogOutDialogComponent } from 'src/app/shared/log-out-dialog/log-out-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SearchBarService } from 'src/app/services/search-bar.service';
+import { Result, SearchGame } from 'src/app/models/searchGame';
 
 @Component({
   selector: 'app-principal',
@@ -15,12 +19,14 @@ export class PrincipalComponent implements OnInit {
   opened = true;
   isMobile: boolean = false;
 
-
+  searchControl = new FormControl();
+  searchResults: Result[] = [];
   
   constructor(
     private breakpointObserver: BreakpointObserver,
     private dialog: MatDialog,
     private router: Router,
+    private searchService: SearchBarService
     ) {
 
 
@@ -41,6 +47,19 @@ export class PrincipalComponent implements OnInit {
     if (!localStorage.getItem('token')){
       this.router.navigate(['/login']);
     }
+
+  this.searchControl.valueChanges
+  .pipe(
+    debounceTime(300), // Espera 300ms después de la última pulsación de tecla
+    distinctUntilChanged() // Ignora cambios si el valor no ha cambiado
+  )
+  .subscribe((searchValue: string) => {
+    this.searchService.searchGames(searchValue).subscribe((resultados: SearchGame) => {
+      
+      this.searchResults = resultados.results;
+      
+    });
+  });
   }
   
   //Método para abrir y cerrar el menú lateral
