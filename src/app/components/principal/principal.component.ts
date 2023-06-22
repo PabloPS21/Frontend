@@ -21,6 +21,7 @@ export class PrincipalComponent implements OnInit {
 
   searchControl = new FormControl();
   searchResults: Result[] = [];
+  inputValue: string = '';
   
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -48,18 +49,22 @@ export class PrincipalComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-  this.searchControl.valueChanges
-  .pipe(
-    debounceTime(300), // Espera 300ms después de la última pulsación de tecla
-    distinctUntilChanged() // Ignora cambios si el valor no ha cambiado
-  )
-  .subscribe((searchValue: string) => {
-    this.searchService.searchGames(searchValue).subscribe((resultados: SearchGame) => {
-      
-      this.searchResults = resultados.results;
-      
+    this.searchControl.valueChanges
+    .pipe(
+      debounceTime(150),
+      distinctUntilChanged()
+    )
+    .subscribe((searchValue: string) => {
+      this.searchService.searchGames(searchValue).subscribe((resultados: SearchGame) => {
+        this.searchResults = resultados.results.sort((a, b) => b.playtime - a.playtime);
+        console.log(this.searchResults);
+        this.inputValue = searchValue;
+      });
     });
-  });
+  }
+
+  botonMenu(): void {
+    this.searchResults = [];
   }
   
   //Método para abrir y cerrar el menú lateral

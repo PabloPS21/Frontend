@@ -15,7 +15,7 @@ export class SearchBarService {
   constructor(private http: HttpClient) { }
 
   searchGames(name: string): Observable<SearchGame> {
-    const url = `${this.baseUrl}/games?key=${this.apiKey}&search=${name}`;
+    let url = `${this.baseUrl}/games?key=${this.apiKey}&search=${name}&search_exact`;
     return this.http.get<SearchGame>(url);
   }
 }
