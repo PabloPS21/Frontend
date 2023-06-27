@@ -10,9 +10,9 @@
           <app-game-card [juego]="juego"></app-game-card>
         </div>
     </div>
-
+ 
     <h3>
-      <a routerLink="/main/recently-added">Ver más...</a>
+      <a *ngIf="!loading" routerLink="/main/recently-added">Ver más...</a>
     </h3>
     <h2 class="title">CONTENIDO RELACIONADO</h2>
     <div class="news-container" *ngFor="let noticia of noticiasRelacionadas; let i=index" >

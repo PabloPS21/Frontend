@@ -70,10 +70,9 @@ export class PrincipalComponent implements OnInit {
         if(this.searchResults.length != 0){
           //Mandar a la pantalla de búsqueda con los resultados obtenidos
           const query: string = this.searchControl.value;
-          this.searchService.searchResults = this.searchResults;
           this.router.navigate(['/main/search-results'], {
             queryParams: {
-              query: query
+              query: query,
             }
           });
           this.searchResults = [];

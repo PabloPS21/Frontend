@@ -22,5 +22,12 @@ export class SearchBarService {
     return this.http.get<SearchGame>(url);
   } 
 
+  searchGamesPage(name:string, page:number): Observable<SearchGame> {
+
+    const pageNumber: number = page;
+
+    let url = `${this.baseUrl}/games?key=${this.apiKey}&search=${name}&search_exact&page=${pageNumber}&page_size=20`;
+    return this.http.get<SearchGame>(url);
+  }
 
 }
