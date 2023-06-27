@@ -16,6 +16,7 @@ import { GameCardComponent } from './components/games/game-card/game-card.compon
 import { GameDetailsComponent } from './components/games/game-details/game-details.component';
 import { RecentlyAddedComponent } from './components/pages/recently-added/recently-added.component';
 import { NewTemplateComponent } from './components/news/new-template/new-template.component';
+import { SearchResultsComponent } from './components/pages/search-results/search-results.component';
 
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
@@ -41,6 +42,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 
 
+
 //Configuración de las rutas
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -50,6 +52,7 @@ const routes: Routes = [
     { path: 'info', component: SiteInfoComponent},
     { path: 'recently-added', component: RecentlyAddedComponent},
     { path: 'game-detail', component: GameDetailsComponent},
+    { path: 'search-results', component: SearchResultsComponent}
   ]},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Ruta por defecto
 ];
@@ -68,7 +71,8 @@ const routes: Routes = [
     GameCardComponent,
     GameDetailsComponent,
     RecentlyAddedComponent,
-    NewTemplateComponent
+    NewTemplateComponent,
+    SearchResultsComponent
   ],
   imports: [
     [RouterModule.forRoot(routes)],

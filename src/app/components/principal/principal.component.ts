@@ -49,6 +49,7 @@ export class PrincipalComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
+    //Sirve para hacer peticiones cada 1,5 segundos al escribir en la barra de búsqueda
     this.searchControl.valueChanges
     .pipe(
       debounceTime(150),
@@ -56,13 +57,33 @@ export class PrincipalComponent implements OnInit {
     )
     .subscribe((searchValue: string) => {
       this.searchService.searchGames(searchValue).subscribe((resultados: SearchGame) => {
+        //Ordendos por más jugados
         this.searchResults = resultados.results.sort((a, b) => b.playtime - a.playtime);
-        console.log(this.searchResults);
+        this.searchService.searchResults = this.searchResults;
         this.inputValue = searchValue;
       });
     });
+
+    //Código al pulsar la tecla enter
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        if(this.searchResults.length != 0){
+          //Mandar a la pantalla de búsqueda con los resultados obtenidos
+          const query: string = this.searchControl.value;
+          this.searchService.searchResults = this.searchResults;
+          this.router.navigate(['/main/search-results'], {
+            queryParams: {
+              query: query
+            }
+          });
+          this.searchResults = [];
+        }
+      }
+    });
   }
 
+
+  //Si pulso uno de los juegos de la lista de resultados, la lista se vacia para poder buscar otra vez
   botonMenu(): void {
     this.searchResults = [];
   }

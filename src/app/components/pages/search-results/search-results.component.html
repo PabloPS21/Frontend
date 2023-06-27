@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>Mostrando resultados para "{{query}}"</h1>
+    <div class="row">
+        <div class="col" *ngFor="let juego of searchResults">
+            <app-game-card [juego] = "juego"></app-game-card>
+        </div>
+    </div>
+</div>
