@@ -8,8 +8,7 @@
         <input matInput [formControl]="searchControl" placeholder="Buscar videojuegos por título...">
         <ul *ngIf="searchResults.length > 0 && inputValue" class="search-results">
           <button (click)="botonMenu()" [routerLink]="['/main/game-detail']" [queryParams]="{ info: juego.id}" class="gameButtons" *ngFor="let juego of searchResults.slice(0,5)">
-            <img src={{juego.background_image}}>
-            <h3>{{juego.name}}</h3>
+            <p class="gameTitle">{{juego.name}}</p>
           </button>
         </ul>
       </div>
@@ -34,7 +33,7 @@
           <mat-list-item routerLink="/main/recently-added" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Recientes</span>  
           </mat-list-item>
-          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item routerLink="/main/genres" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Por género</span>  
           </mat-list-item>
           <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">

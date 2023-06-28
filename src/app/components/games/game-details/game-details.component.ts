@@ -18,7 +18,7 @@ export class GameDetailsComponent implements OnInit {
   juego: GameById | undefined;
 
   plataformas: string[] = [];
-  generos: string[] = [];
+  generos: Genre[] = [];
   fechaSalida: string = "";
   descripcion: string = "";
   desarrolladores: string[] = [];
@@ -31,7 +31,7 @@ export class GameDetailsComponent implements OnInit {
   
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.id= params['info']; 
+      this.id= params['id']; 
       if (this.id) {
         this.gameDetaisService.getGameDetailsBySlug(this.id)
           .subscribe((result: GameById) => {
@@ -43,7 +43,7 @@ export class GameDetailsComponent implements OnInit {
             this.plataformas = this.juego?.platforms.map((platform: Platform) => platform.platform.name) || [];
             
             // Obtener los géneros
-            this.generos = this.juego?.genres.map((genre: Genre) => genre.name) || [];
+            this.generos = this.juego?.genres.map((genre: Genre) => genre) || [];
             
             // Obtener la fecha de salida y formatearla con el patrón 'dd-MM-yyyy'
             const fechaSalidaRaw = this.juego?.released;

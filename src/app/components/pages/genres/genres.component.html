@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>LISTA DE GÉNEROS</h1>
+    <div class="row">
+        <div class="col" *ngFor="let genre of genreResults">
+            <app-genres-card [genre]="genre"></app-genres-card>
+        </div>
+    </div>
+</div>

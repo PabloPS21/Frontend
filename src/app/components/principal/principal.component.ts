@@ -52,7 +52,7 @@ export class PrincipalComponent implements OnInit {
     //Sirve para hacer peticiones cada 1,5 segundos al escribir en la barra de búsqueda
     this.searchControl.valueChanges
     .pipe(
-      debounceTime(150),
+      debounceTime(100),
       distinctUntilChanged()
     )
     .subscribe((searchValue: string) => {

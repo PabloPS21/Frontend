@@ -30,7 +30,10 @@
                 <div class="genre secondRow">
                     <p class="detail-title">Géneros</p>
                     <div class="details-list">
-                        <div class="list-item" *ngFor="let genero of generos">{{ genero }}</div>
+                        <div class="list-item genres" *ngFor="let genero of generos" [routerLink]="['/main/games-result']"
+                        [queryParams]="{genre: genero.name, genreId: genero.id}">
+                            {{ genero.name }}
+                        </div>
                     </div>
                 </div>               
                 <div class="fechaSalida secondRow">
