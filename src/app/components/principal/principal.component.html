@@ -1,9 +1,18 @@
 <div class="container">
     <mat-toolbar>
-      <button mat-icon-button *ngIf="isMobile" (click)="toggleSidenav()">
+      <button class="menu"mat-icon-button *ngIf="isMobile" (click)="toggleSidenav()">
         <mat-icon style="color: white;">menu</mat-icon>
       </button>
-      <span><img src="assets/images/title.png"></span>
+      <span><img src="assets/images/title.png" *ngIf="!isMobile"></span>
+      <div class="search-container">
+        <input matInput [formControl]="searchControl" placeholder="Buscar videojuegos por título...">
+        <ul *ngIf="searchResults.length > 0 && inputValue" class="search-results">
+          <button (click)="botonMenu()" [routerLink]="['/main/game-detail']" [queryParams]="{ info: juego.id}" class="gameButtons" *ngFor="let juego of searchResults.slice(0,5)">
+            <img src={{juego.background_image}}>
+            <h3>{{juego.name}}</h3>
+          </button>
+        </ul>
+      </div>
     </mat-toolbar>
     
     <mat-sidenav-container class="sidenav-container">
@@ -22,8 +31,8 @@
             <span class="sidenav-label">Buscar</span>
             <mat-icon matListItemIcon>search</mat-icon>
           </mat-list-item>
-          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
-            <span style="font-size: small;">- Por título</span>  
+          <mat-list-item routerLink="/main/recently-added" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
+            <span style="font-size: small;">- Recientes</span>  
           </mat-list-item>
           <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Por género</span>  

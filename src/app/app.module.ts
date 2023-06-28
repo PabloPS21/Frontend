@@ -15,6 +15,8 @@ import { SiteInfoComponent } from './components/pages/site-info/site-info.compon
 import { GameCardComponent } from './components/games/game-card/game-card.component';
 import { GameDetailsComponent } from './components/games/game-details/game-details.component';
 import { RecentlyAddedComponent } from './components/pages/recently-added/recently-added.component';
+import { NewTemplateComponent } from './components/news/new-template/new-template.component';
+import { SearchResultsComponent } from './components/pages/search-results/search-results.component';
 
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
@@ -35,6 +37,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {ReactiveFormsModule} from '@angular/forms';
+
+
+
 
 
 //Configuración de las rutas
@@ -46,6 +52,7 @@ const routes: Routes = [
     { path: 'info', component: SiteInfoComponent},
     { path: 'recently-added', component: RecentlyAddedComponent},
     { path: 'game-detail', component: GameDetailsComponent},
+    { path: 'search-results', component: SearchResultsComponent}
   ]},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Ruta por defecto
 ];
@@ -63,7 +70,9 @@ const routes: Routes = [
     SiteInfoComponent,
     GameCardComponent,
     GameDetailsComponent,
-    RecentlyAddedComponent
+    RecentlyAddedComponent,
+    NewTemplateComponent,
+    SearchResultsComponent
   ],
   imports: [
     [RouterModule.forRoot(routes)],
@@ -87,7 +96,8 @@ const routes: Routes = [
     MatGridListModule,
     MatRadioModule,
     NgxPaginationModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   exports: [RouterModule],
   providers: [],

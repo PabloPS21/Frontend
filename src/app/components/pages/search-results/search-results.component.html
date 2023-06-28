@@ -1,0 +1,16 @@
+<div class="container">
+    <h1 id="top">Mostrando resultados para "{{query}}"</h1>
+
+    <div *ngIf="loading" class="spinner-overlay">
+        <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    </div>
+
+    <div class="row" *ngIf="!loading">
+        <div class="col" *ngFor="let juego of searchResults | paginate: { itemsPerPage: 20, currentPage: page }">
+            <app-game-card [juego] = "juego"></app-game-card>
+        </div>
+    </div>
+</div>
+
+<pagination-controls *ngIf="!loading" (pageChange)="onPageChange($event)" previousLabel="Anterior" nextLabel="Siguiente">
+</pagination-controls>
