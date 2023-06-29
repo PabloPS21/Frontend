@@ -7,7 +7,7 @@
       <div class="search-container">
         <input matInput [formControl]="searchControl" placeholder="Buscar videojuegos por título...">
         <ul *ngIf="searchResults.length > 0 && inputValue" class="search-results">
-          <button (click)="botonMenu()" [routerLink]="['/main/game-detail']" [queryParams]="{ info: juego.id}" class="gameButtons" *ngFor="let juego of searchResults.slice(0,5)">
+          <button (click)="botonMenu()" [routerLink]="['/main/game-detail']" [queryParams]="{ game: juego.name, id: juego.id}" class="gameButtons" *ngFor="let juego of searchResults.slice(0,5)">
             <p class="gameTitle">{{juego.name}}</p>
           </button>
         </ul>

@@ -1,4 +1,7 @@
- 
+.container {
+  height: 100%;
+}
+
 .header {
     display: flex;
     flex-direction: column;
@@ -34,9 +37,9 @@
   }
   
 .col {
-    flex: 1 0 20%;
-    padding: 10px; 
-    max-width: fit-content;
+  flex: 0 0 25%;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .spinner-overlay {
@@ -73,5 +76,11 @@
     
     .spinner-overlay mat-progress-spinner {
         transform: scale(0.4);
+    }
+
+    .col {
+      flex: 0 0 50%;
+      padding: 10px;
+      box-sizing: border-box;
     }
   }
