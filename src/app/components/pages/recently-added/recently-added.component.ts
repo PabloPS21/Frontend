@@ -232,6 +232,7 @@ export class RecentlyAddedComponent implements OnInit {
     }
   }
 
+  //Ordena por tiempo de juego
   ordenarPuntuacion(): void {
     this.juegosMostrados.sort((a, b) => b.playtime - a.playtime);
     this.page = 1;

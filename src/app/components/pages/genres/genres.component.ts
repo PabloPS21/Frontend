@@ -11,6 +11,8 @@ export class GenresComponent implements OnInit {
   
   genreResults : GenreResult[] = []; 
 
+  loading: boolean = true;
+
   constructor (
     private genreService: GenresService
   ) {}
@@ -22,7 +24,7 @@ export class GenresComponent implements OnInit {
   obtenerGeneros(): void {
     this.genreService.getGenres().subscribe((result: GenreModel) => {
       this.genreResults = result.results;
-      console.log(this.genreResults);
+      this.loading = false;
     })
   }
 

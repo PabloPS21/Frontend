@@ -21,7 +21,7 @@ export class GameDetailsComponent implements OnInit {
   generos: Genre[] = [];
   fechaSalida: string = "";
   descripcion: string = "";
-  desarrolladores: string[] = [];
+  desarrolladores: Developer[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -56,7 +56,7 @@ export class GameDetailsComponent implements OnInit {
             this.descripcion = this.quitarHTML(this.juego?.description)
 
             //Obtener los desarrolladores
-            this.desarrolladores = this.juego?.developers.map((developer: Developer) => developer.name) || [];
+            this.desarrolladores = this.juego?.developers.map((developer: Developer) => developer) || [];
 
           });
       }

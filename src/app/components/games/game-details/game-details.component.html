@@ -24,13 +24,16 @@
                 <div class="desarrolladora ">
                     <p class="detail-title">Desarrolladora</p>
                     <div class="details-list">
-                        <div class="list-item" *ngFor="let developer of desarrolladores">{{ developer }}</div>
+                        <div class="list-item clickables" *ngFor="let developer of desarrolladores" [routerLink]="['/main/games-result-developer']"
+                        [queryParams]="{developer: developer.slug, developerId: developer.id}">
+                            {{ developer.name }}
+                        </div>
                     </div>
                 </div>
                 <div class="genre secondRow">
                     <p class="detail-title">Géneros</p>
                     <div class="details-list">
-                        <div class="list-item genres" *ngFor="let genero of generos" [routerLink]="['/main/games-result']"
+                        <div class="list-item clickables" *ngFor="let genero of generos" [routerLink]="['/main/games-result']"
                         [queryParams]="{genre: genero.name, genreId: genero.id}">
                             {{ genero.name }}
                         </div>

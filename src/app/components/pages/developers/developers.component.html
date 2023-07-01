@@ -1,8 +1,8 @@
 <div class="container" *ngIf="!loading">
-    <h1 class="title">LISTA DE GÉNEROS</h1>
+    <h1 class="title">DESARROLLADORAS MÁS POPULARES</h1>
     <div class="row">
-        <div class="col" *ngFor="let genre of genreResults">
-            <app-genres-card [genre]="genre"></app-genres-card>
+        <div class="col" *ngFor="let developer of developerResult">
+            <app-developer-card [developer]="developer"></app-developer-card>
         </div>
     </div>
 </div>

@@ -2,58 +2,60 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { Result, SearchGame } from 'src/app/models/searchGame';
-import { GenresService } from 'src/app/services/genres.service';
+import { DevelopersService } from 'src/app/services/developers.service';
 
 @Component({
-  selector: 'app-games-results',
-  templateUrl: './games-results.component.html',
-  styleUrls: ['./games-results.component.css']
+  selector: 'app-games-results-developers',
+  templateUrl: './games-results-developers.component.html',
+  styleUrls: ['./games-results-developers.component.css']
 })
-export class GamesResultsComponent implements OnInit {
+export class GamesResultsDevelopersComponent implements OnInit{
 
-  genreId: number = 0;
-  genreName: string = '';
+  developerId: number = 0;
+  developerName: string = '';
   gameResults: Result[] = [];
 
   page: number = 0;
+  numPages: number = 0;
 
   loading: boolean = true;
 
   constructor(
-    private genresService: GenresService,
+    private developerService: DevelopersService,
     private route: ActivatedRoute
   ) {}
 
-
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.genreId = params['genreId'];
-      this.genreName = params['genre'];
-      console.log(this.genreName)
+      this.developerId = params['developerId'];
+      this.developerName = params['developer'];
     })
 
-    this.obtenerJuegos(this.genreId)
+    this.obtenerJuegos(this.developerName)
 
   }
 
-  obtenerJuegos(genreId: number): void {
+  obtenerJuegos(developerName: string): void {
     this.page = 1;
 
-    this.genresService.getGamesByGenreId(genreId, this.page).subscribe((result: SearchGame) =>{
+    this.developerService.getGamesByDevelopersName(this.page, developerName).subscribe((result: SearchGame) =>{
       const games: Result[] = result.results;
+
       this.gameResults = games;
+
+      this.numPages = Math.ceil(result.count / 20);
 
       const requests = [];
 
-        //Obtiene solamente 10 páginas de 20 cada una
-        for (let i = 2; i <= 10; i++) {
-          requests.push(this.genresService.getGamesByGenreId(genreId, i));
+        
+       for (let i = 2; i <= this.numPages ; i++) {
+          requests.push(this.developerService.getGamesByDevelopersName(i, developerName));
         }
 
         forkJoin(requests).subscribe((results: SearchGame[]) => {
           const additionalGames = results.flatMap((result: SearchGame) => result.results);
           this.gameResults.push(...additionalGames);
-          console.log(this.gameResults)
+          
         })
       
         this.loading = false;

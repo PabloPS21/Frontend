@@ -28,21 +28,25 @@ mat-card {
     padding: 10px;
   }
 
-  .genre-card {
+  .developer-card {
     transition: transform 0.3s ease;
     width: 85%;
   }
   
-  .genre-card:hover {
+  .developer-card:hover {
     transform: scale(1.05);
     cursor: pointer;
   }
 
-  .genre-card:hover .name {
+  .developer-card:hover .name {
     text-decoration: underline;
     color: rgba(33, 150, 243, 0.5);
   }
 
+  .games-count {
+    color: gray;
+    font-style: italic;
+  }
   
   @media (max-width: 767px) {
 
