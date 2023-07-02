@@ -1,6 +1,7 @@
 <mat-card>
     <mat-card-header>
-        <img mat-card-image [src]="juego?.background_image" alt="{{ juego?.slug }}">
+        <img mat-card-image *ngIf="juego?.background_image" [src]="juego?.background_image" alt="{{ juego?.slug }}">
+        <img mat-card-image *ngIf="!juego?.background_image" src="assets/images/noImage.png" alt="Imagen Alternativa">
         <div class="content">
             <div class="header">
                 <h1>{{juego?.name}}</h1>

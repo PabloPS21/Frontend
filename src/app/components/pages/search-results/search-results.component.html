@@ -1,9 +1,15 @@
-<div class="container">
-    <h1 id="top">Mostrando resultados para "{{query}}"</h1>
+<div class="container" *ngIf="!loading">
+    <h1 class="title" id="top">Mostrando resultados para "{{query}}"</h1>
 
-    <div *ngIf="loading" class="spinner-overlay">
-        <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
-    </div>
+    <button mat-button [matMenuTriggerFor]="menu" class="buttonMenu">
+        <span id="addSpan">ORDENAR POR</span>
+        <mat-icon>sort</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="ordenarTitulo()">Título</button>
+        <button mat-menu-item (click)="ordenarFecha()">Fecha</button>
+        <button mat-menu-item (click)="ordenarPuntuacion()">Más jugados</button>
+      </mat-menu>
 
     <div class="row" *ngIf="!loading">
         <div class="col" *ngFor="let juego of searchResults | paginate: { itemsPerPage: 20, currentPage: page }">
@@ -14,3 +20,9 @@
 
 <pagination-controls *ngIf="!loading" (pageChange)="onPageChange($event)" previousLabel="Anterior" nextLabel="Siguiente">
 </pagination-controls>
+
+<div *ngIf="loading" class="spinner-overlay">
+    <div class="spinner-container">
+        <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    </div>
+</div>

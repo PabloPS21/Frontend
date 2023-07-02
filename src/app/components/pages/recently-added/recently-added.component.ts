@@ -241,7 +241,7 @@ export class RecentlyAddedComponent implements OnInit {
   ordenarFecha(): void {
     this.juegosMostrados.sort((a, b) => {
       if (a.released && b.released) {
-        return new Date(a.released).getTime() - new Date(b.released).getTime();
+        return new Date(b.released).getTime() - new Date(a.released).getTime();
       } else {
         return 0;
       }
