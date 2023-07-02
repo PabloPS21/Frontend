@@ -38,6 +38,12 @@ import {MatRadioModule} from '@angular/material/radio';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ReactiveFormsModule} from '@angular/forms';
+import { GenresComponent } from './components/pages/genres/genres.component';
+import { GenresCardComponent } from './components/games/genres-card/genres-card.component';
+import { GamesResultsComponent } from './components/pages/games-results/games-results.component';
+import { DevelopersComponent } from './components/pages/developers/developers.component';
+import { DeveloperCardComponent } from './components/games/developer-card/developer-card.component';
+import { GamesResultsDevelopersComponent } from './components/pages/games-results-developers/games-results-developers.component';
 
 
 
@@ -52,7 +58,11 @@ const routes: Routes = [
     { path: 'info', component: SiteInfoComponent},
     { path: 'recently-added', component: RecentlyAddedComponent},
     { path: 'game-detail', component: GameDetailsComponent},
-    { path: 'search-results', component: SearchResultsComponent}
+    { path: 'search-results', component: SearchResultsComponent},
+    { path: 'genres', component: GenresComponent},
+    { path: 'developers', component: DevelopersComponent},
+    { path: 'games-result', component: GamesResultsComponent},
+    { path: 'games-result-developer', component: GamesResultsDevelopersComponent}
   ]},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Ruta por defecto
 ];
@@ -72,7 +82,13 @@ const routes: Routes = [
     GameDetailsComponent,
     RecentlyAddedComponent,
     NewTemplateComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    GenresComponent,
+    GenresCardComponent,
+    GamesResultsComponent,
+    DevelopersComponent,
+    DeveloperCardComponent,
+    GamesResultsDevelopersComponent
   ],
   imports: [
     [RouterModule.forRoot(routes)],

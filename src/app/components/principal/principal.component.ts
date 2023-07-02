@@ -49,10 +49,10 @@ export class PrincipalComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    //Sirve para hacer peticiones cada 1,5 segundos al escribir en la barra de búsqueda
+    //Sirve para hacer peticiones cada 1 segundo al escribir en la barra de búsqueda
     this.searchControl.valueChanges
     .pipe(
-      debounceTime(150),
+      debounceTime(100),
       distinctUntilChanged()
     )
     .subscribe((searchValue: string) => {
@@ -96,6 +96,7 @@ export class PrincipalComponent implements OnInit {
     this.abrirDialogo();
   }
 
+  //Diálogo de cerrar sesión
   abrirDialogo(): MatDialogRef<any> {
     return this.dialog.open(LogOutDialogComponent, {
       width: '400px',

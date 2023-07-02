@@ -68,4 +68,26 @@ export class SearchResultsComponent implements OnInit {
     }
   }
 
+  //Ordena por tiempo de juego
+  ordenarPuntuacion(): void {
+    this.searchResults.sort((a, b) => b.playtime - a.playtime);
+    this.page = 1;
+  }
+  
+  ordenarFecha(): void {
+    this.searchResults.sort((a, b) => {
+      if (a.released && b.released) {
+        return new Date(b.released).getTime() - new Date(a.released).getTime();
+      } else {
+        return 0;
+      }
+    });
+    this.page = 1;
+  }
+  
+  ordenarTitulo(): void {
+    this.searchResults.sort((a, b) => a.name.localeCompare(b.name));
+    this.page = 1; 
+  }
+
 }

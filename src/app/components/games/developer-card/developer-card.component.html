@@ -1,0 +1,11 @@
+<mat-card class="developer-card" [routerLink]="['/main/games-result-developer']" [queryParams]="{developer: developer.slug, developerId: developer.id}">
+    <mat-card-header class="developer-header">
+      <img mat-card-image [src]="developer.image_background" alt="{{ developer.slug }}">  
+    </mat-card-header>
+    <mat-card-content>
+      <p class="name">{{ developer.name }}</p>
+      <span class="games-count">({{ developer.games_count }} juegos)</span>
+    </mat-card-content>
+    <mat-card-actions class="actions">
+    </mat-card-actions>
+  </mat-card>

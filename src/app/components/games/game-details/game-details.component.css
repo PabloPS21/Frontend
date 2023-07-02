@@ -73,6 +73,16 @@ mat-card-header {
     font-size: small;
   }
 
+  .clickables {
+    transition: transform 0.3s, background-color 0.3s;
+  }
+
+  .clickables:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: rgb(185, 185, 185)
+  }
+
   .detail-title {
     font-weight: bold;
   }
