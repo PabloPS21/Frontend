@@ -110,7 +110,8 @@ export class SigInComponent {
     return this.dialog.open(SuccesDialogComponent, {
       width: '400px',
       disableClose: true,
-      autoFocus: false
+      autoFocus: false,
+      data: { texto: "Te has registrado correctamente!" } // Pasar el texto como datos al diálogo
     });
   }
 

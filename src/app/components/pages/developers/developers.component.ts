@@ -43,7 +43,6 @@ export class DevelopersComponent implements OnInit{
         forkJoin(requests).subscribe((results: DeveloperModel[]) => {
           const additionalDevelopers: DeveloperResult[] = results.flatMap((result: DeveloperModel) => result.results)
           this.developerResult.push(...additionalDevelopers);
-          console.log(this.developerResult)
           this.loading = false;
         })
 

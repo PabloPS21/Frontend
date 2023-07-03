@@ -95,9 +95,10 @@
     border: 1px solid #007bff;
   }
   
-  .sidenav-container {
+  .sidenav-container {    
     flex: 1;
     display: flex;
+    flex-direction: column;
     background-color: aliceblue;
   }
   
@@ -119,6 +120,7 @@
   }
   
   .center-content {
+    flex-grow: 1;
     text-align: center; 
     padding-left: 20px;   
     padding-top: 20px;

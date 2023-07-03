@@ -10,9 +10,9 @@
                     <mat-icon>add</mat-icon>    
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item>Pendientes</button>
-                    <button mat-menu-item>Jugando</button>
-                    <button mat-menu-item>Terminados</button>
+                    <button mat-menu-item (click)="registrar('Pendiente')">Pendientes</button>
+                    <button mat-menu-item (click)="registrar('Jugando')">Jugando</button>
+                    <button mat-menu-item (click)="registrar('Finalizado')">Terminados</button>
                 </mat-menu>
             </div>
             <div class="details">

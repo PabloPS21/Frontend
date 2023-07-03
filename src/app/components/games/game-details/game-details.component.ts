@@ -5,6 +5,10 @@ import { DatePipe } from '@angular/common';
 import { Platform, Genre } from 'src/app/models/searchGame';
 import { ObtainGameDetailsService } from 'src/app/services/obtain-game-details.service';
 import { Developer, GameById } from 'src/app/models/gameById';
+import { RegisterGamesService } from 'src/app/services/register-games.service';
+import { RegisteredGame } from 'src/app/models/registeredGame';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SuccesDialogComponent } from 'src/app/shared/succes-dialog/succes-dialog.component';
 
 @Component({
   selector: 'app-game-details',
@@ -23,10 +27,14 @@ export class GameDetailsComponent implements OnInit {
   descripcion: string = "";
   desarrolladores: Developer[] = [];
 
+  registeredGame: RegisteredGame | undefined
+
   constructor(
     private route: ActivatedRoute,
     private gameDetaisService: ObtainGameDetailsService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private registrarJuegoService: RegisterGamesService,
+    private dialog: MatDialog
   ) {}
   
   ngOnInit(): void {
@@ -37,7 +45,6 @@ export class GameDetailsComponent implements OnInit {
           .subscribe((result: GameById) => {
             this.juego = result;
 
-            console.log(this.juego.id);
 
             // Obtener las plataformas
             this.plataformas = this.juego?.platforms.map((platform: Platform) => platform.platform.name) || [];
@@ -70,5 +77,32 @@ export class GameDetailsComponent implements OnInit {
     div.innerHTML = html;
     var text = div.textContent || div.innerText || "";
     return text;
+  }
+
+  registrar(estado:string) {
+    const nombre = this.juego!.name;
+    const est = estado;
+    const urlImage = this.juego!.background_image
+
+    //Registrar juegos
+    this.registrarJuegoService.registrarJuego(nombre, est, urlImage).
+      subscribe((response) => {
+        this.registeredGame = response;
+        this.abrirDialogo();
+      })
+
+    //Obtener juegos
+    this.registrarJuegoService.obtenerJuegosUsuario().
+      subscribe((response) => {
+      })
+  }
+
+  abrirDialogo(): MatDialogRef<any> {
+    return this.dialog.open(SuccesDialogComponent, {
+      width: '400px',
+      disableClose: true,
+      autoFocus: false,
+      data: { texto: "Has añadido el juego con exito" } // Pasar el texto como datos al diálogo
+    });
   }
 }
