@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-header>
+        <img mat-card-image *ngIf="juego.urlImage" [src]="juego.urlImage" alt="{{ juego.nombre }}">
+        <img mat-card-image *ngIf="!juego.urlImage" src="assets/images/noImage.png" alt="Imagen Alternativa"> 
+    </mat-card-header>
+    <p class="name">{{ juego.nombre }}</p>
+    <mat-card-actions class="actions">
+        <span class="dates">Inicio: {{ juego.fechaInicio ? (juego.fechaInicio | date) : '-' }}</span>
+        <span class="dates">Fin: {{ juego.fechaFin ? (juego.fechaFin | date) : '-' }}</span>
+    </mat-card-actions>
+    <mat-card-footer class="footer">
+        <button mat-raised-button class="editarBoton boton" color="primary">
+            <mat-icon>edit</mat-icon>
+            Editar
+        </button>
+        <button mat-raised-button class="eliminarBoton boton" color="warn">
+            <mat-icon>delete</mat-icon>
+            Eliminar
+        </button>
+    </mat-card-footer>
+</mat-card>

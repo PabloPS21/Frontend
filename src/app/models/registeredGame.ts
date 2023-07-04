@@ -5,5 +5,5 @@ export interface RegisteredGame {
     fechaInicio: Date,
     fechaFin: Date,
     estado: string,
-    urlImage: string
+    urlImage: string,
 }

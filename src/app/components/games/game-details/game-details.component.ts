@@ -89,12 +89,12 @@ export class GameDetailsComponent implements OnInit {
       subscribe((response) => {
         this.registeredGame = response;
         this.abrirDialogo();
-      })
+      },
+      (error) => {
+        console.log("El juega ya está en tus listas!");
+      }
+      );
 
-    //Obtener juegos
-    this.registrarJuegoService.obtenerJuegosUsuario().
-      subscribe((response) => {
-      })
   }
 
   abrirDialogo(): MatDialogRef<any> {
