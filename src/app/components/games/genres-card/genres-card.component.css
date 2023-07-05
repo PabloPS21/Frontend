@@ -8,7 +8,7 @@ mat-card {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 125px;
+    height: 30vh;
     background-color: #f2f2f2;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;

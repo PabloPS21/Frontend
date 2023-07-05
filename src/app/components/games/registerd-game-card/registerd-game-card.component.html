@@ -13,7 +13,7 @@
             <mat-icon>edit</mat-icon>
             Editar
         </button>
-        <button mat-raised-button class="eliminarBoton boton" color="warn">
+        <button mat-raised-button (click)="eliminarJuego(juego.id)" class="eliminarBoton boton" color="warn">
             <mat-icon>delete</mat-icon>
             Eliminar
         </button>

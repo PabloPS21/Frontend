@@ -45,4 +45,9 @@ export class RegisterGamesService {
 
   }
 
+  eliminarJuego(id: number): Observable<any> {
+    const url = `http://localhost:8000/api/games/${id}`;
+    return this.http.delete(url);
+  }
+
 }

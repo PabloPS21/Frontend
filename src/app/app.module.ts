@@ -46,6 +46,7 @@ import { DeveloperCardComponent } from './components/games/developer-card/develo
 import { GamesResultsDevelopersComponent } from './components/pages/games-results-developers/games-results-developers.component';
 import { RegisteredGamesComponent } from './components/pages/registered-games/registered-games.component';
 import { RegisterdGameCardComponent } from './components/games/registerd-game-card/registerd-game-card.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -93,7 +94,8 @@ const routes: Routes = [
     DeveloperCardComponent,
     GamesResultsDevelopersComponent,
     RegisteredGamesComponent,
-    RegisterdGameCardComponent
+    RegisterdGameCardComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     [RouterModule.forRoot(routes)],

@@ -20,7 +20,7 @@ export class NewsService {
     const today = new Date();
     const threeDaysAgo = new Date(today.setDate(today.getDate() - 3)).toLocaleDateString();
 
-    const url = `https://newsapi.org/v2/everything?q=videojuegos&from=${threeDaysAgo}&language=es&apiKey=${this.apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=videojuegos&from=${new Date(today.setDate(today.getDate() - 3)).toLocaleDateString()}&language=es&apiKey=${this.apiKey}`;
 
     return this.http.get<NewsModel>(url);
 

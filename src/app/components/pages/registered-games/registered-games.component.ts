@@ -31,7 +31,6 @@ export class RegisteredGamesComponent implements OnInit {
     this.registerGamesService.obtenerJuegosUsuario().
       subscribe((response: RegisteredGame[]) => {
         this.games = response.filter((juego: RegisteredGame) => juego.estado === this.estado)
-        console.log(this.games);
     })
   }
 }
