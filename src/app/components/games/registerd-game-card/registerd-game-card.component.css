@@ -28,12 +28,36 @@ mat-card {
     padding: 10px;
   }
 
-  .details-link {
-    text-decoration: underline;
+  .actions {
+    display: flex;
+    justify-content: flex-start;
   }
-  
-  .details-link:hover {
-    color: rgba(33, 150, 243, 0.5);
+
+  .dates {
+    margin-left: 12px;
+    font-weight: bold;
+  }
+
+  .dates span {
+    font-weight: normal;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .boton {
+    font-size: smaller;
+  }
+
+  .eliminarBoton {
+    margin: 8px;
+  }
+
+  .modificarBoton {
+    margin-bottom: 8px;
   }
 
   @media (max-width: 767px) {
@@ -49,6 +73,10 @@ mat-card {
 
     mat-card-header {
         height: 80px;
+      }
+
+      .eliminarBoton {
+        width: 30%;
       }
   
   }

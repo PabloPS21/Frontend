@@ -46,14 +46,14 @@
             <span class="sidenav-label">Mi biblioteca</span>
             <mat-icon matListItemIcon>book</mat-icon>
           </mat-list-item>
-          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item [routerLink]="['/main/my-games']" [queryParams]="{status: 'Pendiente'}" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Pendientes</span>  
           </mat-list-item>
-          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item [routerLink]="['/main/my-games']" [queryParams]="{status: 'Jugando'}" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Jugando</span>  
           </mat-list-item>
-          <mat-list-item style="padding: 5px 0px 5px 70px; height: 50%;">
-            <span style="font-size: small;">- Terminados</span>  
+          <mat-list-item [routerLink]="['/main/my-games']" [queryParams]="{status: 'Finalizado'}" style="padding: 5px 0px 5px 70px; height: 50%;">
+            <span style="font-size: small;">- Finalizados</span>  
           </mat-list-item>
           <mat-divider></mat-divider>
 

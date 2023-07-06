@@ -44,6 +44,9 @@ import { GamesResultsComponent } from './components/pages/games-results/games-re
 import { DevelopersComponent } from './components/pages/developers/developers.component';
 import { DeveloperCardComponent } from './components/games/developer-card/developer-card.component';
 import { GamesResultsDevelopersComponent } from './components/pages/games-results-developers/games-results-developers.component';
+import { RegisteredGamesComponent } from './components/pages/registered-games/registered-games.component';
+import { RegisterdGameCardComponent } from './components/games/registerd-game-card/registerd-game-card.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -62,7 +65,8 @@ const routes: Routes = [
     { path: 'genres', component: GenresComponent},
     { path: 'developers', component: DevelopersComponent},
     { path: 'games-result', component: GamesResultsComponent},
-    { path: 'games-result-developer', component: GamesResultsDevelopersComponent}
+    { path: 'games-result-developer', component: GamesResultsDevelopersComponent},
+    { path: 'my-games', component: RegisteredGamesComponent}
   ]},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Ruta por defecto
 ];
@@ -88,7 +92,10 @@ const routes: Routes = [
     GamesResultsComponent,
     DevelopersComponent,
     DeveloperCardComponent,
-    GamesResultsDevelopersComponent
+    GamesResultsDevelopersComponent,
+    RegisteredGamesComponent,
+    RegisterdGameCardComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     [RouterModule.forRoot(routes)],

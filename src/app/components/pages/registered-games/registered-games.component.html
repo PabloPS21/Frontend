@@ -1,0 +1,8 @@
+<div class="container">
+    <h1 class="title">{{estado | uppercase}}</h1>
+    <div class="row">
+        <div class="col" *ngFor="let game of games">
+            <app-registerd-game-card [juego] = "game"></app-registerd-game-card>
+        </div>
+    </div>
+</div>

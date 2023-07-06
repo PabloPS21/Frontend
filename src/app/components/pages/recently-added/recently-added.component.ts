@@ -121,7 +121,7 @@ export class RecentlyAddedComponent implements OnInit {
         this.juegosMostrados = games;
   
         const requests = [];
-        for (let i = 2; i <= this.numPages; i++) {
+        for (let i = 2; i <= 20; i++) {
           requests.push(this.releasedGameService.juegosEstrenadosUltimoMes(i));
         }
   
@@ -176,7 +176,7 @@ export class RecentlyAddedComponent implements OnInit {
         this.juegosMostrados = games;
   
         const requests = [];
-        for (let i = 2; i <= 100; i++) {
+        for (let i = 2; i <= 30; i++) {
           requests.push(this.releasedGameService.juegosEstrenadosUltimosTresMeses(i));
         }
   
