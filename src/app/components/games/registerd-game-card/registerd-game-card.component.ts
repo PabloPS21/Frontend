@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EditGame } from 'src/app/models/editGame';
 import { RegisteredGame } from 'src/app/models/registeredGame';
 import { RegisterGamesService } from 'src/app/services/register-games.service';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
@@ -25,7 +26,6 @@ export class RegisterdGameCardComponent {
       if (result) {
         this.registerGamesService.eliminarJuego(id).subscribe(
           () => {
-            console.log("Juego eliminado con éxito");
             location.reload();
           }
         );
@@ -39,6 +39,35 @@ export class RegisterdGameCardComponent {
       disableClose: true,
       autoFocus: false,
     });
+  }
+
+  modficarJuego(id: number, estado: string): void {
+
+    const game: EditGame = {
+      fechaInicio: new Date(),
+      fechaFin: new Date(),
+      estado: estado
+    }
+
+    if(estado == 'Jugando') {
+      game.fechaInicio = new Date();
+      game.fechaFin = undefined;
+    }
+
+    if(estado == 'Finalizado') {
+      game.fechaFin = new Date();
+    }
+
+
+    this.registerGamesService.editarJuego(id, game).subscribe(
+
+      response => {
+        location.reload();
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
   
 }

@@ -56,6 +56,10 @@
     align-items: center;
   }
 
+  .news-container {
+    max-width: 95%;
+  }
+
   
 
 @media (max-width: 767px) {

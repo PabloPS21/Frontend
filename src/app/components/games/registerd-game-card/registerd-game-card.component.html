@@ -5,13 +5,17 @@
     </mat-card-header>
     <p class="name">{{ juego.nombre }}</p>
     <mat-card-actions class="actions">
-        <span class="dates">Inicio: {{ juego.fechaInicio ? (juego.fechaInicio | date) : '-' }}</span>
-        <span class="dates">Fin: {{ juego.fechaFin ? (juego.fechaFin | date) : '-' }}</span>
+        <span class="dates">Inicio: <span>{{ juego.fechaInicio ? (juego.fechaInicio | date) : '-' }}</span></span>
+        <span class="dates">Fin: <span>{{ juego.fechaFin ? (juego.fechaFin | date) : '-' }}</span></span>
     </mat-card-actions>
     <mat-card-footer class="footer">
-        <button mat-raised-button class="editarBoton boton" color="primary">
-            <mat-icon>edit</mat-icon>
-            Editar
+        <button mat-raised-button (click)="modficarJuego(juego.id, 'Jugando')" *ngIf="juego.estado == 'Pendiente'" class="modificarBoton boton" color="primary">
+            <mat-icon>upgrade</mat-icon>
+            Añadir a "Jugando"
+        </button>
+        <button mat-raised-button (click)="modficarJuego(juego.id, 'Finalizado')" *ngIf="juego.estado == 'Jugando'" class="modificarBoton boton" color="primary">
+            <mat-icon>upgrade</mat-icon>
+            Añadir a "Finalizados"
         </button>
         <button mat-raised-button (click)="eliminarJuego(juego.id)" class="eliminarBoton boton" color="warn">
             <mat-icon>delete</mat-icon>

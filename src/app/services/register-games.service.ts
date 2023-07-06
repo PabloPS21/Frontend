@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RegisteredGame } from '../models/registeredGame';
 import { TokenService } from './token.service';
+import { EditGame } from '../models/editGame';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,11 @@ export class RegisterGamesService {
   eliminarJuego(id: number): Observable<any> {
     const url = `http://localhost:8000/api/games/${id}`;
     return this.http.delete(url);
+  }
+
+  editarJuego(id: number, game: EditGame) {
+    const url = `http://localhost:8000/api/games/${id}`;
+    return this.http.put(url, game)
   }
 
 }
