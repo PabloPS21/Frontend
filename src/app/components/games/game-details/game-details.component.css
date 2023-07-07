@@ -88,8 +88,39 @@ mat-card-header {
   }
 
   #texto {
-    text-align: justify;
+    margin: 0 15px;
+    align-self: flex-start;
+    text-align: left;
   }
+
+  mat-card-actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .screenshot-title {
+    margin-top: 20px;
+  }
+
+  .screenshots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+  }
+
+  .screenshot {
+    height: 30vh;
+    width: 30%;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s;
+  }
+  
+  .screenshot:hover {
+    transform: scale(1.05);
+  }
+  
 
   @media (max-width: 600px) {
     mat-card-header {
@@ -121,6 +152,10 @@ mat-card-header {
 
     #addSpan {
         display: none;
+    }
+
+    .screenshot {
+      flex-basis: 100%;
     }
 
     

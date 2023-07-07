@@ -49,5 +49,10 @@
     </mat-card-header>
     <mat-card-actions class="description">
         <p id="texto">{{descripcion}}</p>
+
+        <h2 class="screenshot-title">CAPTURAS DE PANTALLA</h2>
+        <div class="screenshots-container">
+            <img class="screenshot" *ngFor="let screenshot of screenshots" src = {{screenshot.image}} (click)="openImage(screenshot.image)">
+        </div>
     </mat-card-actions>
 </mat-card>

@@ -9,6 +9,8 @@ import { RegisterGamesService } from 'src/app/services/register-games.service';
 import { RegisteredGame } from 'src/app/models/registeredGame';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SuccesDialogComponent } from 'src/app/shared/succes-dialog/succes-dialog.component';
+import { Screenshots } from 'src/app/models/screenshot';
+import { ImageDialogComponent } from 'src/app/shared/image-dialog/image-dialog.component';
 
 @Component({
   selector: 'app-game-details',
@@ -26,6 +28,7 @@ export class GameDetailsComponent implements OnInit {
   fechaSalida: string = "";
   descripcion: string = "";
   desarrolladores: Developer[] = [];
+  screenshots: Screenshots[] = [];
 
   registeredGame: RegisteredGame | undefined
 
@@ -66,6 +69,12 @@ export class GameDetailsComponent implements OnInit {
             this.desarrolladores = this.juego?.developers.map((developer: Developer) => developer) || [];
 
           });
+
+        this.gameDetaisService.getGameScreenshots(this.id).
+          subscribe((result: any) => {
+            this.screenshots = result.results;
+            console.log(this.screenshots);
+          })
       }
     });
   }
@@ -104,5 +113,14 @@ export class GameDetailsComponent implements OnInit {
       autoFocus: false,
       data: { texto: "Has añadido el juego con exito" } // Pasar el texto como datos al diálogo
     });
+  }
+
+
+  //Abrir screenshot en un modal
+  openImage(imageUrl: string): void {
+    const dialogRef = this.dialog.open(ImageDialogComponent, {
+      data: { imageUrl },
+    });
+
   }
 }

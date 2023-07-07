@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environment/environment';
 import { HttpClient } from '@angular/common/http';
-import { Result } from '../models/searchGame';
 import { Observable } from 'rxjs';
 import { GameById } from '../models/gameById';
 
@@ -19,5 +18,10 @@ export class ObtainGameDetailsService {
 
     const url = `${this.baseUrl}/${id}?key=${this.apiKey}`;
     return this.http.get<GameById>(url);
+  }
+
+  getGameScreenshots(id:number): Observable<any> {
+    const url = `${this.baseUrl}/${id}/screenshots?key=${this.apiKey}`;
+    return this.http.get<any>(url);
   }
 }
