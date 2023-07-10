@@ -11,6 +11,7 @@ import { RegisterGamesService } from 'src/app/services/register-games.service';
 export class RegisteredGamesComponent implements OnInit {
 
   estado: string = "";
+  titulo: string = "";
   games: RegisteredGame[] = [];
 
   constructor(
@@ -22,10 +23,18 @@ export class RegisteredGamesComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.estado = params['status'];
       this.obtenerJuegos();
+      this.changeTitle(this.estado);
     })
-
-    
+  
   }
+
+  changeTitle(estado: string): void {
+    switch(estado) {
+      case "Pendiente": this.titulo = 'Pendientes' ; break
+      case "Jugando" : this.titulo = 'Jugando' ; break
+      case "Finalizado": this.titulo = 'Finalizados'
+    }
+   }
 
   obtenerJuegos(): void {
     this.registerGamesService.obtenerJuegosUsuario().

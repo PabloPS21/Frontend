@@ -97,21 +97,30 @@ export class GameDetailsComponent implements OnInit {
     this.registrarJuegoService.registrarJuego(nombre, est, urlImage).
       subscribe((response) => {
         this.registeredGame = response;
-        this.abrirDialogo();
+        this.abrirDialogoSucces();
       },
       (error) => {
-        console.log("El juega ya está en tus listas!");
+        this.abrirDialogoError();
       }
       );
 
   }
 
-  abrirDialogo(): MatDialogRef<any> {
+  abrirDialogoSucces(): MatDialogRef<any> {
     return this.dialog.open(SuccesDialogComponent, {
       width: '400px',
       disableClose: true,
       autoFocus: false,
       data: { texto: "Has añadido el juego con exito" } // Pasar el texto como datos al diálogo
+    });
+  }
+
+  abrirDialogoError(): MatDialogRef<any> {
+    return this.dialog.open(SuccesDialogComponent, {
+      width: '400px',
+      disableClose: true,
+      autoFocus: false,
+      data: { texto: "El juego ya está en tus listas" } // Pasar el texto como datos al diálogo
     });
   }
 

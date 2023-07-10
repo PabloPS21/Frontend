@@ -86,6 +86,14 @@ mat-card {
 
       .eliminarBoton {
         width: 30%;
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .modificarBoton {
+        width: 40%;
+        font-size: 12px;
+        padding: 4px 8px;
       }
   
   }

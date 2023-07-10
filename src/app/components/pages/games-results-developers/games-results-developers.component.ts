@@ -1,3 +1,4 @@
+import { UpperCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -31,7 +32,7 @@ export class GamesResultsDevelopersComponent implements OnInit{
       this.developerName = params['developer'];
     })
 
-    this.obtenerJuegos(this.developerName)
+    this.obtenerJuegos(this.developerName) 
 
   }
 

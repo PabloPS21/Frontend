@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+p {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
 .title {
   font-size: 24px;
   font-weight: bold;
@@ -45,7 +50,7 @@
 
 @media (max-width: 768px) {
   .col {
-    flex: 0 0 50%;
+    flex: 0 0 100%;
     padding: 10px;
     box-sizing: border-box;
   }

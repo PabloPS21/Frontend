@@ -20,7 +20,7 @@
         <!--MENÚ LATERAL-->
         <mat-nav-list class="sidenav-list">
           <mat-divider></mat-divider>
-          <mat-list-item routerLink="/main/inicio" routerLinkActive="active">
+          <mat-list-item  (click)="changeSection()" routerLink="/main/inicio" routerLinkActive="active">
             <span class="sidenav-label">Inicio</span>
             <mat-icon matListItemIcon>home</mat-icon>
           </mat-list-item>
@@ -30,13 +30,13 @@
             <span class="sidenav-label">Buscar</span>
             <mat-icon matListItemIcon>search</mat-icon>
           </mat-list-item>
-          <mat-list-item routerLink="/main/recently-added" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" routerLink="/main/recently-added" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Recientes</span>  
           </mat-list-item>
-          <mat-list-item routerLink="/main/genres" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" routerLink="/main/genres" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Género</span>  
           </mat-list-item>
-          <mat-list-item routerLink="/main/developers" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" routerLink="/main/developers" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Desarrolladora</span>  
           </mat-list-item>
           
@@ -46,18 +46,18 @@
             <span class="sidenav-label">Mi biblioteca</span>
             <mat-icon matListItemIcon>book</mat-icon>
           </mat-list-item>
-          <mat-list-item [routerLink]="['/main/my-games']" [queryParams]="{status: 'Pendiente'}" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Pendiente'}" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Pendientes</span>  
           </mat-list-item>
-          <mat-list-item [routerLink]="['/main/my-games']" [queryParams]="{status: 'Jugando'}" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Jugando'}" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Jugando</span>  
           </mat-list-item>
-          <mat-list-item [routerLink]="['/main/my-games']" [queryParams]="{status: 'Finalizado'}" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Finalizado'}" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- Finalizados</span>  
           </mat-list-item>
           <mat-divider></mat-divider>
 
-          <mat-list-item routerLink="/main/info" routerLinkActive="active" class="sidenav-item">
+          <mat-list-item (click)="changeSection()" routerLink="/main/info" routerLinkActive="active" class="sidenav-item">
             <span class="sidenav-label">Sobre el sitio</span>
             <mat-icon matListItemIcon>info</mat-icon>
           </mat-list-item>

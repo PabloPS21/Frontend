@@ -110,6 +110,18 @@ export class PrincipalComponent implements OnInit {
     this.opened = !this.opened; 
   }
 
+   // Método para ocultar el menú lateral en dispositivos móviles
+   hideMenu() {
+    this.opened = false;
+  }
+
+  //Si está en resolución móbil, cuando pulse a algún elemento del menú se cierra el menú
+  changeSection() {
+    if(this.isMobile){
+      this.opened = !this.opened;
+    }
+  }
+
   cerrarSesion(): void {
     this.abrirDialogo();
   }

@@ -1,6 +1,7 @@
 <div class="container">
-    <h1 class="title">{{estado | uppercase}}</h1>
-    <div class="row">
+    <h1 class="title">{{titulo | uppercase}}</h1>
+    <p *ngIf="games.length == 0">No tienes ningún juego actualmente en esta lista</p>
+    <div class="row" >
         <div class="col" *ngFor="let game of games">
             <app-registerd-game-card [juego] = "game"></app-registerd-game-card>
         </div>
