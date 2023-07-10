@@ -24,4 +24,9 @@ export class ObtainGameDetailsService {
     const url = `${this.baseUrl}/${id}/screenshots?key=${this.apiKey}`;
     return this.http.get<any>(url);
   }
+
+  getRelatedGames(id:number): Observable<any> {
+    const url = `${this.baseUrl}/${id}/game-series?key=${this.apiKey}`;
+    return this.http.get<any>(url);
+  }
 }

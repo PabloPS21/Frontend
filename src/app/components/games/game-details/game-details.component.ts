@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
-import { Platform, Genre } from 'src/app/models/searchGame';
+import { Platform, Genre, Result } from 'src/app/models/searchGame';
 import { ObtainGameDetailsService } from 'src/app/services/obtain-game-details.service';
 import { Developer, GameById } from 'src/app/models/gameById';
 import { RegisterGamesService } from 'src/app/services/register-games.service';
@@ -29,6 +29,7 @@ export class GameDetailsComponent implements OnInit {
   descripcion: string = "";
   desarrolladores: Developer[] = [];
   screenshots: Screenshots[] = [];
+  relatedGames: Result[] = [];
 
   registeredGame: RegisteredGame | undefined
 
@@ -70,14 +71,27 @@ export class GameDetailsComponent implements OnInit {
 
           });
 
-        this.gameDetaisService.getGameScreenshots(this.id).
-          subscribe((result: any) => {
-            this.screenshots = result.results;
-            console.log(this.screenshots);
-          })
-      }
-    });
+          //Obtener screenshots
+          this.gameDetaisService.getGameScreenshots(this.id).
+            subscribe((result: any) => {
+              this.screenshots = result.results;
+              console.log(this.screenshots);
+            })
+          }
+
+          //Obtener juegos relacionados
+          this.gameDetaisService.getRelatedGames(this.id).subscribe((result) => {
+            this.relatedGames = result.results;
+            console.log(this.relatedGames);
+          });
+
+          const element = document.getElementById('top');
+          if (element) {
+            element.scrollIntoView({ behavior: 'auto' });
+          }
+          });
   }
+
 
   //Método para eliminar las etiquetas html de la descripción
   quitarHTML(texto: string): string {

@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-header>
+    <mat-card-header id="top">
         <img mat-card-image *ngIf="juego?.background_image" [src]="juego?.background_image" alt="{{ juego?.slug }}">
         <img mat-card-image *ngIf="!juego?.background_image" src="assets/images/noImage.png" alt="Imagen Alternativa">
         <div class="content">
@@ -56,3 +56,12 @@
         </div>
     </mat-card-actions>
 </mat-card>
+
+<div class="relatedGames-container">
+    <h2 class="related-title">JUEGOS RELACIONADOS</h2>
+    <div class="row">
+        <div class="col" *ngFor="let juego of relatedGames">
+            <app-game-card [juego] = "juego"></app-game-card>
+        </div>
+    </div>
+</div>

@@ -31,11 +31,11 @@ p {
 
 
     p {
-        font-size: smaller;
+        font-size: 16px;
     }
 
     h3 {
-        font-size: small;
+        font-size: 16px;
     }
 
     mat-card-header {

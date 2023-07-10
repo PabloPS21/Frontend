@@ -1,3 +1,7 @@
+mat-card {
+  padding-bottom: 20px;
+}
+
 
 mat-card-header img {
     max-width: 40%;
@@ -120,6 +124,25 @@ mat-card-header {
   .screenshot:hover {
     transform: scale(1.05);
   }
+
+  .row {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+  
+  .col {
+    flex: 0 0 25%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .related-title {
+    margin-top: 20px;
+  }
+  
   
 
   @media (max-width: 600px) {
@@ -158,5 +181,10 @@ mat-card-header {
       flex-basis: 100%;
     }
 
+    .col {
+      flex: 0 0 50%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
     
   }
