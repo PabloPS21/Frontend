@@ -1,30 +1,30 @@
 <div class="container" id="top">
   <div class="header">
-    <h1 id="titulo">JUEGOS ESTRENADOS EN LA ÚLTIMA SEMANA</h1>
+    <h1 id="titulo">GAMES RELEASED IN THE LAST WEEK</h1>
 
     <div class="options">
       <mat-radio-group [value]="'lastWeek'">
         <mat-radio-button value="lastWeek" class="custom-radio-button" color="primary"
           (click)="mostrarJuegosEstrenadosUltimaSemana()">
-          <span class="radio-label">ÚLTIMA SEMANA</span>
+          <span class="radio-label">LAST WEEK</span>
         </mat-radio-button>
         <mat-radio-button value="lastMonth" class="custom-radio-button" color="primary"
           (click)="mostrarJuegosEstrenadosUltimoMes()">
-          <span class="radio-label">ÚLTIMO MÉS</span>
+          <span class="radio-label">LAST MONTH</span>
         </mat-radio-button>
         <mat-radio-button value="lastThreeMonths" class="custom-radio-button" color="primary"
           (click)="mostrarJuegosEstrenadosUltimosTresMeses()">
-          <span class="radio-label">ÚLTIMOS TRES MESES</span>
+          <span class="radio-label">LAST THREE MONTHS</span>
         </mat-radio-button>
       </mat-radio-group>
       <button mat-button [matMenuTriggerFor]="menu" class="buttonMenu">
-        <span id="addSpan">ORDENAR POR</span>
+        <span id="addSpan">SORT BY</span>
         <mat-icon>sort</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="ordenarTitulo()">Título</button>
-        <button mat-menu-item (click)="ordenarFecha()">Fecha</button>
-        <button mat-menu-item (click)="ordenarPuntuacion()">Más jugados</button>
+        <button mat-menu-item (click)="ordenarTitulo()">Title</button>
+        <button mat-menu-item (click)="ordenarFecha()">Date</button>
+        <button mat-menu-item (click)="ordenarPuntuacion()">Time played</button>
       </mat-menu>
     </div>
 
@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<pagination-controls (pageChange)="onPageChange($event)" previousLabel="Anterior" nextLabel="Siguiente" *ngIf="!showSpinner">
+<pagination-controls (pageChange)="onPageChange($event)" previousLabel="Previous" nextLabel="Next" *ngIf="!showSpinner">
 </pagination-controls>
 
                   

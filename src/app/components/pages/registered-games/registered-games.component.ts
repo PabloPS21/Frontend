@@ -30,9 +30,9 @@ export class RegisteredGamesComponent implements OnInit {
 
   changeTitle(estado: string): void {
     switch(estado) {
-      case "Pendiente": this.titulo = 'Pendientes' ; break
-      case "Jugando" : this.titulo = 'Jugando' ; break
-      case "Finalizado": this.titulo = 'Finalizados'
+      case "Pendiente": this.titulo = 'Interested' ; break
+      case "Jugando" : this.titulo = 'Playing' ; break
+      case "Finalizado": this.titulo = 'Played'
     }
    }
 

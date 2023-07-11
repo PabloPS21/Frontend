@@ -1,5 +1,5 @@
 <div class="container" *ngIf="!loading">
-    <h2 class="title">RECIENTEMENTE AÑADIDOS</h2>
+    <h2 class="title">RECENTLY ADDED</h2>
     
     <div class="row" *ngIf="!loading">
         <div class="col" *ngFor="let juego of juegosEstrenados; let i=index">
@@ -8,9 +8,9 @@
     </div>
  
     <h3>
-      <a routerLink="/main/recently-added">Ver más...</a>
+      <a routerLink="/main/recently-added">See more...</a>
     </h3>
-    <h2 class="title">CONTENIDO RELACIONADO</h2>
+    <h2 class="title">RELATED CONTENT</h2>
     <div class="news-container" *ngFor="let noticia of noticiasRelacionadas; let i=index" >
       <app-new-template [new]="noticia"></app-new-template>
     </div>

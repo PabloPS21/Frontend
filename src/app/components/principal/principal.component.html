@@ -5,7 +5,7 @@
       </button>
       <span><img src="assets/images/title.png" *ngIf="!isMobile"></span>
       <div class="search-container">
-        <input matInput [formControl]="searchControl" placeholder="Buscar videojuegos por título...">
+        <input matInput [formControl]="searchControl" placeholder="Search games by title...">
         <ul *ngIf="searchResults.length > 0 && inputValue" class="search-results">
           <button (click)="botonMenu()" [routerLink]="['/main/game-detail']" [queryParams]="{ game: juego.name, id: juego.id}" class="gameButtons" *ngFor="let juego of searchResults.slice(0,5)">
             <p class="gameTitle">{{juego.name}}</p>
@@ -21,50 +21,50 @@
         <mat-nav-list class="sidenav-list">
           <mat-divider></mat-divider>
           <mat-list-item  (click)="changeSection()" routerLink="/main/inicio" routerLinkActive="active">
-            <span class="sidenav-label">Inicio</span>
+            <span class="sidenav-label">HOME</span>
             <mat-icon matListItemIcon>home</mat-icon>
           </mat-list-item>
           <mat-divider></mat-divider>
 
           <mat-list-item disableRipple>
-            <span class="sidenav-label">Buscar</span>
+            <span class="sidenav-label">SEARCH</span>
             <mat-icon matListItemIcon>search</mat-icon>
           </mat-list-item>
           <mat-list-item (click)="changeSection()" routerLink="/main/recently-added" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
-            <span style="font-size: small;">- Recientes</span>  
+            <span style="font-size: small;">- RECENTS</span>  
           </mat-list-item>
           <mat-list-item (click)="changeSection()" routerLink="/main/genres" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
-            <span style="font-size: small;">- Género</span>  
+            <span style="font-size: small;">- GENRE</span>  
           </mat-list-item>
           <mat-list-item (click)="changeSection()" routerLink="/main/developers" routerLinkActive="active" style="padding: 5px 0px 5px 70px; height: 50%;">
-            <span style="font-size: small;">- Desarrolladora</span>  
+            <span style="font-size: small;">- DEVELOPER</span>  
           </mat-list-item>
           
           <mat-divider></mat-divider>
 
           <mat-list-item disableRipple>
-            <span class="sidenav-label">Mi biblioteca</span>
+            <span class="sidenav-label">MY LIBRARY</span>
             <mat-icon matListItemIcon>book</mat-icon>
           </mat-list-item>
           <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Pendiente'}" style="padding: 5px 0px 5px 70px; height: 50%;">
-            <span style="font-size: small;">- Pendientes</span>  
+            <span style="font-size: small;">- INTERESTED</span>  
           </mat-list-item>
           <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Jugando'}" style="padding: 5px 0px 5px 70px; height: 50%;">
-            <span style="font-size: small;">- Jugando</span>  
+            <span style="font-size: small;">- PLAYING</span>  
           </mat-list-item>
           <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Finalizado'}" style="padding: 5px 0px 5px 70px; height: 50%;">
-            <span style="font-size: small;">- Finalizados</span>  
+            <span style="font-size: small;">- PLAYED</span>  
           </mat-list-item>
           <mat-divider></mat-divider>
 
           <mat-list-item (click)="changeSection()" routerLink="/main/info" routerLinkActive="active" class="sidenav-item">
-            <span class="sidenav-label">Sobre el sitio</span>
+            <span class="sidenav-label">ABOUT</span>
             <mat-icon matListItemIcon>info</mat-icon>
           </mat-list-item>
           <mat-divider></mat-divider>
 
           <mat-list-item (click)="cerrarSesion()">
-            <span class="sidenav-label">Cerrar sesión</span>
+            <span class="sidenav-label">Log out</span>
             <mat-icon matListItemIcon>logout</mat-icon>
           </mat-list-item>
           

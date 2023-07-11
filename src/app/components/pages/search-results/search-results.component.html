@@ -1,14 +1,14 @@
 <div class="container" *ngIf="!loading">
-    <h1 class="title" id="top">Mostrando resultados para "{{query}}"</h1>
+    <h1 class="title" id="top">Showing results for "{{query}}"</h1>
 
     <button mat-button [matMenuTriggerFor]="menu" class="buttonMenu">
-        <span id="addSpan">ORDENAR POR</span>
+        <span id="addSpan">SORT BY</span>
         <mat-icon>sort</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="ordenarTitulo()">Título</button>
-        <button mat-menu-item (click)="ordenarFecha()">Fecha</button>
-        <button mat-menu-item (click)="ordenarPuntuacion()">Más jugados</button>
+        <button mat-menu-item (click)="ordenarTitulo()">Title</button>
+        <button mat-menu-item (click)="ordenarFecha()">Date</button>
+        <button mat-menu-item (click)="ordenarPuntuacion()">Time played</button>
       </mat-menu>
 
     <div class="row" *ngIf="!loading">
@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<pagination-controls *ngIf="!loading" (pageChange)="onPageChange($event)" previousLabel="Anterior" nextLabel="Siguiente">
+<pagination-controls *ngIf="!loading" (pageChange)="onPageChange($event)" previousLabel="Previous" nextLabel="Next">
 </pagination-controls>
 
 <div *ngIf="loading" class="spinner-overlay">

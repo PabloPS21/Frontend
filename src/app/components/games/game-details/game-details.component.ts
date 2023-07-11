@@ -125,7 +125,7 @@ export class GameDetailsComponent implements OnInit {
       width: '400px',
       disableClose: true,
       autoFocus: false,
-      data: { texto: "Has añadido el juego con exito" } // Pasar el texto como datos al diálogo
+      data: { texto: "You have added the game successfully" } // Pasar el texto como datos al diálogo
     });
   }
 
@@ -134,7 +134,7 @@ export class GameDetailsComponent implements OnInit {
       width: '400px',
       disableClose: true,
       autoFocus: false,
-      data: { texto: "El juego ya está en tus listas" } // Pasar el texto como datos al diálogo
+      data: { texto: "The game is already in your lists" } // Pasar el texto como datos al diálogo
     });
   }
 

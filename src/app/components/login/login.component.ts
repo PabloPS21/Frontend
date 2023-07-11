@@ -63,7 +63,7 @@ export class LoginComponent {
 
     // Validar que los campos no estén vacíos
     if (!this.username || !this.password) {
-      this.error = 'Por favor, completa todos los campos.';
+      this.error = 'Please, fill all the fields.';
       return false;
     }
 

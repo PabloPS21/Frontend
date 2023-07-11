@@ -21,7 +21,7 @@ export class NewsService {
     const threeDaysAgo = new Date(today.setDate(today.getDate() - 3)).toISOString();
 
 
-    const url = `https://newsapi.org/v2/everything?q=videojuegos&from=${threeDaysAgo}&language=es&apiKey=${this.apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=videogames&from=${threeDaysAgo}&language=en&apiKey=${this.apiKey}`;
 
     return this.http.get<NewsModel>(url);
 
