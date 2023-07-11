@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
-import { Platform, Genre } from 'src/app/models/searchGame';
+import { Platform, Genre, Result } from 'src/app/models/searchGame';
 import { ObtainGameDetailsService } from 'src/app/services/obtain-game-details.service';
 import { Developer, GameById } from 'src/app/models/gameById';
 import { RegisterGamesService } from 'src/app/services/register-games.service';
 import { RegisteredGame } from 'src/app/models/registeredGame';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SuccesDialogComponent } from 'src/app/shared/succes-dialog/succes-dialog.component';
+import { Screenshots } from 'src/app/models/screenshot';
+import { ImageDialogComponent } from 'src/app/shared/image-dialog/image-dialog.component';
 
 @Component({
   selector: 'app-game-details',
@@ -26,6 +28,8 @@ export class GameDetailsComponent implements OnInit {
   fechaSalida: string = "";
   descripcion: string = "";
   desarrolladores: Developer[] = [];
+  screenshots: Screenshots[] = [];
+  relatedGames: Result[] = [];
 
   registeredGame: RegisteredGame | undefined
 
@@ -66,9 +70,28 @@ export class GameDetailsComponent implements OnInit {
             this.desarrolladores = this.juego?.developers.map((developer: Developer) => developer) || [];
 
           });
-      }
-    });
+
+          //Obtener screenshots
+          this.gameDetaisService.getGameScreenshots(this.id).
+            subscribe((result: any) => {
+              this.screenshots = result.results;
+              console.log(this.screenshots);
+            })
+          }
+
+          //Obtener juegos relacionados
+          this.gameDetaisService.getRelatedGames(this.id).subscribe((result) => {
+            this.relatedGames = result.results;
+            console.log(this.relatedGames);
+          });
+
+          const element = document.getElementById('top');
+          if (element) {
+            element.scrollIntoView({ behavior: 'auto' });
+          }
+          });
   }
+
 
   //Método para eliminar las etiquetas html de la descripción
   quitarHTML(texto: string): string {
@@ -88,21 +111,39 @@ export class GameDetailsComponent implements OnInit {
     this.registrarJuegoService.registrarJuego(nombre, est, urlImage).
       subscribe((response) => {
         this.registeredGame = response;
-        this.abrirDialogo();
+        this.abrirDialogoSucces();
       },
       (error) => {
-        console.log("El juega ya está en tus listas!");
+        this.abrirDialogoError();
       }
       );
 
   }
 
-  abrirDialogo(): MatDialogRef<any> {
+  abrirDialogoSucces(): MatDialogRef<any> {
     return this.dialog.open(SuccesDialogComponent, {
       width: '400px',
       disableClose: true,
       autoFocus: false,
       data: { texto: "Has añadido el juego con exito" } // Pasar el texto como datos al diálogo
     });
+  }
+
+  abrirDialogoError(): MatDialogRef<any> {
+    return this.dialog.open(SuccesDialogComponent, {
+      width: '400px',
+      disableClose: true,
+      autoFocus: false,
+      data: { texto: "El juego ya está en tus listas" } // Pasar el texto como datos al diálogo
+    });
+  }
+
+
+  //Abrir screenshot en un modal
+  openImage(imageUrl: string): void {
+    const dialogRef = this.dialog.open(ImageDialogComponent, {
+      data: { imageUrl },
+    });
+
   }
 }

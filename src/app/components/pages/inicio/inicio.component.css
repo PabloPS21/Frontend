@@ -65,19 +65,19 @@
 @media (max-width: 767px) {
 
     .title {
-        font-size: small;
+        font-size: 18px;
     }
 
+    h3 a {
+      font-size: small;
+    }
 
     .container {
         justify-content: center;
         position: static;
     }
 
-    .news-container {
-      margin-right: 35px;
-    }
-
+   
     .col {
       flex: 0 0 50%;
       padding: 10px;

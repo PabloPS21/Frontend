@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
@@ -8,6 +8,7 @@ import { LogOutDialogComponent } from 'src/app/shared/log-out-dialog/log-out-dia
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SearchBarService } from 'src/app/services/search-bar.service';
 import { Result, SearchGame } from 'src/app/models/searchGame';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-principal',
@@ -22,12 +23,16 @@ export class PrincipalComponent implements OnInit {
   searchControl = new FormControl();
   searchResults: Result[] = [];
   inputValue: string = '';
+
+  clickListener: Function | undefined;
   
   constructor(
     private breakpointObserver: BreakpointObserver,
     private dialog: MatDialog,
     private router: Router,
-    private searchService: SearchBarService
+    private searchService: SearchBarService,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document
     ) {
 
 
@@ -79,8 +84,21 @@ export class PrincipalComponent implements OnInit {
         }
       }
     });
+
+    this.clickListener = this.renderer.listen(this.document, 'click', (event) => {
+      this.closeSearchResults();
+    });
   }
 
+  ngOnDestroy(): void {
+    this.clickListener?.(); // Cancelar la suscripción al evento click
+  }
+
+
+  //Si pulso fuera de la lista la lista de resultados se vacia para que la lista desaparezca
+  closeSearchResults(): void {
+    this.searchResults = []; 
+  }
 
   //Si pulso uno de los juegos de la lista de resultados, la lista se vacia para poder buscar otra vez
   botonMenu(): void {
@@ -90,6 +108,18 @@ export class PrincipalComponent implements OnInit {
   //Método para abrir y cerrar el menú lateral
   toggleSidenav() {
     this.opened = !this.opened; 
+  }
+
+   // Método para ocultar el menú lateral en dispositivos móviles
+   hideMenu() {
+    this.opened = false;
+  }
+
+  //Si está en resolución móbil, cuando pulse a algún elemento del menú se cierra el menú
+  changeSection() {
+    if(this.isMobile){
+      this.opened = !this.opened;
+    }
   }
 
   cerrarSesion(): void {

@@ -95,7 +95,7 @@ const routes: Routes = [
     GamesResultsDevelopersComponent,
     RegisteredGamesComponent,
     RegisterdGameCardComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
   imports: [
     [RouterModule.forRoot(routes)],

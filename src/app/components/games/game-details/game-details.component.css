@@ -1,3 +1,7 @@
+mat-card {
+  padding-bottom: 20px;
+}
+
 
 mat-card-header img {
     max-width: 40%;
@@ -88,8 +92,58 @@ mat-card-header {
   }
 
   #texto {
-    text-align: justify;
+    margin: 0 15px;
+    align-self: flex-start;
+    text-align: left;
   }
+
+  mat-card-actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .screenshot-title {
+    margin-top: 20px;
+  }
+
+  .screenshots-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+  }
+
+  .screenshot {
+    height: 30vh;
+    width: 30%;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s;
+  }
+  
+  .screenshot:hover {
+    transform: scale(1.05);
+  }
+
+  .row {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+  
+  .col {
+    flex: 0 0 25%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .related-title {
+    margin-top: 20px;
+  }
+  
+  
 
   @media (max-width: 600px) {
     mat-card-header {
@@ -123,5 +177,14 @@ mat-card-header {
         display: none;
     }
 
+    .screenshot {
+      flex-basis: 100%;
+    }
+
+    .col {
+      flex: 0 0 50%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
     
   }

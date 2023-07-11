@@ -44,7 +44,7 @@ export class RegisterdGameCardComponent {
   modficarJuego(id: number, estado: string): void {
 
     const game: EditGame = {
-      fechaInicio: new Date(),
+      fechaInicio: this.juego.fechaInicio,
       fechaFin: new Date(),
       estado: estado
     }

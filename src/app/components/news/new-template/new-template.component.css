@@ -27,3 +27,20 @@ p {
     color: #777777;
 }
 
+@media (max-width: 767px) {
+
+
+    p {
+        font-size: 16px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    mat-card-header {
+        height: 80px;
+      }
+  
+  }
+
