@@ -57,7 +57,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SigInComponent },
   { path: 'main', component: PrincipalComponent, children: [
-    { path: 'inicio', component: InicioComponent },
+    { path: 'home', component: InicioComponent },
     { path: 'info', component: SiteInfoComponent},
     { path: 'recently-added', component: RecentlyAddedComponent},
     { path: 'game-detail', component: GameDetailsComponent},

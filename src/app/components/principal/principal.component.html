@@ -20,7 +20,7 @@
         <!--MENÚ LATERAL-->
         <mat-nav-list class="sidenav-list">
           <mat-divider></mat-divider>
-          <mat-list-item  (click)="changeSection()" routerLink="/main/inicio" routerLinkActive="active">
+          <mat-list-item  (click)="changeSection()" routerLink="/main/home" routerLinkActive="active">
             <span class="sidenav-label">HOME</span>
             <mat-icon matListItemIcon>home</mat-icon>
           </mat-list-item>
@@ -46,13 +46,13 @@
             <span class="sidenav-label">MY LIBRARY</span>
             <mat-icon matListItemIcon>book</mat-icon>
           </mat-list-item>
-          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Pendiente'}" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Interested'}" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- INTERESTED</span>  
           </mat-list-item>
-          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Jugando'}" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Playing'}" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- PLAYING</span>  
           </mat-list-item>
-          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Finalizado'}" style="padding: 5px 0px 5px 70px; height: 50%;">
+          <mat-list-item (click)="changeSection()" [routerLink]="['/main/my-games']" [queryParams]="{status: 'Played'}" style="padding: 5px 0px 5px 70px; height: 50%;">
             <span style="font-size: small;">- PLAYED</span>  
           </mat-list-item>
           <mat-divider></mat-divider>
@@ -64,7 +64,7 @@
           <mat-divider></mat-divider>
 
           <mat-list-item (click)="cerrarSesion()">
-            <span class="sidenav-label">Log out</span>
+            <span class="sidenav-label">LOG OUT</span>
             <mat-icon matListItemIcon>logout</mat-icon>
           </mat-list-item>
           

@@ -42,7 +42,7 @@
                 </div>               
                 <div class="fechaSalida secondRow">
                     <p class="detail-title">Release date</p>
-                    <span>{{fechaSalida? fechaSalida: 'Por determinar'}}</span>
+                    <span>{{fechaSalida? fechaSalida: 'To be announced'}}</span>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
     <mat-card-actions class="description">
         <p id="texto">{{descripcion}}</p>
 
-        <h2 class="screenshot-title">SCREENSHOTS</h2>
+        <h2 class="screenshot-title" *ngIf="screenshots.length > 0">SCREENSHOTS</h2>
         <div class="screenshots-container">
             <img class="screenshot" *ngFor="let screenshot of screenshots" src = {{screenshot.image}} (click)="openImage(screenshot.image)">
         </div>

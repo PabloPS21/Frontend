@@ -39,7 +39,7 @@ export class LoginComponent {
 
     if (token) {
       //Si tiene token siginifica que no tiene que logearse
-      this.router.navigate(['/main/inicio']);
+      this.router.navigate(['/main/home']);
 
     } else {
       // Si no lo mandamos al login
@@ -81,7 +81,7 @@ export class LoginComponent {
           //Nos guardamos el token en el almacenamiento local
           localStorage.setItem('token', this.token);
 
-          this.router.navigate(['/main/inicio']);
+          this.router.navigate(['/main/home']);
         },
         error: error => {
           // Mostrar el mensaje de error

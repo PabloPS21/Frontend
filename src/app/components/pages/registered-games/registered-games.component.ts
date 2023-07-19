@@ -11,6 +11,7 @@ import { RegisterGamesService } from 'src/app/services/register-games.service';
 export class RegisteredGamesComponent implements OnInit {
 
   estado: string = "";
+  estadoApi: string = "";
   titulo: string = "";
   games: RegisteredGame[] = [];
 
@@ -30,16 +31,16 @@ export class RegisteredGamesComponent implements OnInit {
 
   changeTitle(estado: string): void {
     switch(estado) {
-      case "Pendiente": this.titulo = 'Interested' ; break
-      case "Jugando" : this.titulo = 'Playing' ; break
-      case "Finalizado": this.titulo = 'Played'
+      case "Interested": this.titulo = 'Interested'; this.estadoApi='Pendiente'; break
+      case "Playing" : this.titulo = 'Playing'; this.estadoApi ='Jugando'; break
+      case "Played": this.titulo = 'Played'; this.estadoApi = 'Finalizado'
     }
    }
 
   obtenerJuegos(): void {
     this.registerGamesService.obtenerJuegosUsuario().
       subscribe((response: RegisteredGame[]) => {
-        this.games = response.filter((juego: RegisteredGame) => juego.estado === this.estado)
+        this.games = response.filter((juego: RegisteredGame) => juego.estado === this.estadoApi)
     })
   }
 }

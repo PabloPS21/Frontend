@@ -48,7 +48,7 @@ export class RecentlyAddedComponent implements OnInit {
     this.showSpinner = true;
     
     const titulo = document.getElementById("titulo");
-    if (titulo) titulo!.innerHTML = "JUEGOS ESTRENADOS EN LA ÚLTIMA SEMANA";
+    if (titulo) titulo!.innerHTML = "GAMES RELEASED IN THE LAST WEEK";
 
     var semanaLocal = sessionStorage.getItem("juegosSemanaReduced")
   
@@ -105,7 +105,7 @@ export class RecentlyAddedComponent implements OnInit {
     this.showSpinner = true;
     
     const titulo = document.getElementById("titulo");
-    if (titulo) titulo!.innerHTML = "JUEGOS ESTRENADOS EN EL ÚLTIMO MÉS";
+    if (titulo) titulo!.innerHTML = "GAMES RELEASED IN THE LAST MONTH";
 
     var mesLocal = sessionStorage.getItem("juegosMesReduced")
   
@@ -160,7 +160,7 @@ export class RecentlyAddedComponent implements OnInit {
     this.showSpinner = true;
   
     const titulo = document.getElementById("titulo");
-    if (titulo) titulo!.innerHTML = "JUEGOS ESTRENADOS EN LOS ÚLTIMOS TRES MESES";
+    if (titulo) titulo!.innerHTML = "GAMES RELEASED IN THE LAST THREE MONTHS";
 
     var tresMesesLocal = sessionStorage.getItem("juegosTresMesesReduced")
   
